@@ -1,0 +1,19 @@
+[project]
+name = "equipo-17-pymes"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "-"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard] (>=0.118.0,<0.119.0)",
+    "sqlalchemy (==2.0.43)",
+    "psycopg[binary] (==3.2.1)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
