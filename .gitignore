@@ -30,7 +30,6 @@ venv/
 ENV/
 .venv*/
 env.*/
-poetry.lock
 
 # MongoDB
 

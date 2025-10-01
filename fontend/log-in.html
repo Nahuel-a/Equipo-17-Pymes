@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     
     <title>Log In</title>
 </head>
@@ -13,7 +13,7 @@
         <div class="containerInfo">
             <div class="logo">⚡ Company</div>
             <h1>Ingresar a su cuenta</h1>
-            <p>No tiene cuenta? <a href="register-user.html">Registrese</a></p>
+            <p>No tiene cuenta? <a href="{{ url_for('register') }}">Registrese</a></p>
             <p>Impulsamos tu PyME, respaldamos tus sueños.</p>
             <a class="btn">Saber más</a>
         </div>
@@ -31,7 +31,7 @@
                 <button class="btn" type="submit">Enviar</button>
             </form>
 
-            <p>Olvido su contraseña? <a href="password-user.html">Recuperar</a></p>
+            <p>Olvido su contraseña? <a href="{{ url_for('password_recovery') }}">Recuperar</a></p>
         </div>
     </main>
 </body>
