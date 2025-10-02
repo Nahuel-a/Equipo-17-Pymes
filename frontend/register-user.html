@@ -13,7 +13,7 @@
     <div class="container">
         <!-- Info -->
         <div class="info">
-            <div class="logo">⚡ Company</div>
+            <div class="logo">CreditBusters</div>
             <h1>Registrar <br> nueva cuenta</h1>
             <p>¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Log In</a></p>
             <p>Finanzas inteligentes para un mundo en movimiento.</p>
@@ -23,11 +23,18 @@
         <!-- Formulario REGISTRO -->
         <div class="formulario">
             <h2>Registro</h2>
-            <form>
-                <input type="text" placeholder="Nombre" required>
-                <input type="text" placeholder="Apellido" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Contraseña" required>
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+            <form action="/register" method="post" id="registerForm">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <div id="email-error" class="error-message" style="display: none;"></div>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required 
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                       title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres.">
+                <div id="password-strength" class="info-message"></div>
                 <button type="submit">Enviar</button>
             </form>
         </div>

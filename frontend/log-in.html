@@ -11,7 +11,7 @@
 <body>
     <main>
         <div class="containerInfo">
-            <div class="logo">⚡ Company</div>
+            <div class="logo">CreditBusters</div>
             <h1>Ingresar a su cuenta</h1>
             <p>No tiene cuenta? <a href="{{ url_for('register') }}">Registrese</a></p>
             <p>Impulsamos tu PyME, respaldamos tus sueños.</p>
@@ -19,14 +19,18 @@
         </div>
 
         <div class="containerLogin">
-            <form action="" method="" class="containerForm">
+            <form action="/login" method="post" class="containerForm">
                 <h1>Log In</h1>
 
-                <label for="userEmail">EMAIL</label>
-                <input type="text" name="userEmail" required />
+                {% if error %}
+                <div class="error-message">{{ error }}</div>
+                {% endif %}
 
-                <label for="userPassword">CONTRASEÑA</label>
-                <input type="password" name="userPassword" required/>
+                <label for="email">EMAIL</label>
+                <input type="text" name="email" required />
+
+                <label for="password">CONTRASEÑA</label>
+                <input type="password" name="password" required/>
 
                 <button class="btn" type="submit">Enviar</button>
             </form>

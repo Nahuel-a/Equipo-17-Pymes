@@ -10,7 +10,7 @@
 <body>
     <main>
         <div class="containerInfo">
-            <div class="logo">⚡ Company</div>
+            <div class="logo">CreditBusters</div>
             <h1>Recuperar Cuenta</h1>
             <p>No tiene cuenta? <a href="{{ url_for('register') }}">Registrese</a></p>
             <p>Impulsamos tu PyME, respaldamos tus sueños.</p>
@@ -18,11 +18,11 @@
         </div>
 
         <div class="containerLogin">
-            <form id="passwordForm" class="containerForm">
+            <form id="passwordForm" action="/recover-account" method="post" class="containerForm">
                 <h1>Recuperar</h1>
                 
                 <label for="userEmail">EMAIL</label>
-                <input type="email" name="userEmail" required />
+                <input type="email" name="email" required />
                 
                 <label for="newPassword">NUEVA CONTRASEÑA</label>
                 <input type="password" id="newPassword" name="newPassword" required/> 
