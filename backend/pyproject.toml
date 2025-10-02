@@ -11,6 +11,8 @@ dependencies = [
     "fastapi[standard] (>=0.118.0,<0.119.0)",
     "sqlalchemy (==2.0.43)",
     "psycopg[binary] (==3.2.1)",
+    "pydantic-settings (>=2.11.0,<3.0.0)",
+    "alembic (>=1.16.5,<2.0.0)",
 ]
 
 
