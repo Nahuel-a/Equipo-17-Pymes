@@ -2,14 +2,18 @@ from pydantic_settings import BaseSettings
 from functools import lru_cache
 
 class Settings(BaseSettings):
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_SERVER: str = "localhost"
-    POSTGRES_PORT: int = 5432
-    POSTGRES_DB: str
+    # Database settings
+    DATABASE_USERNAME: str
+    DATABASE_PASSWORD: str
+    DATABASE_HOST: str = "localhost"
+    DATABASE_PORT: int = 5432
+    DATABASE_NAME: str
+
+    # Security settings
+    CORS_DOMAINS: str
 
     class Config:
-        env_file = ".env"
+        env_file = "../.env"
         case_sensitive = True
 
 @lru_cache

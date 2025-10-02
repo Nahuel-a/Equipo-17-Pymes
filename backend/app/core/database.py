@@ -5,7 +5,7 @@ from sqlalchemy.orm import DeclarativeBase
 settings = get_settings()
 
 # Build the PostgreSQL database URL using the environment settings.
-SQLALCHEMY_DATABASE_URL = f"postgresql+psycopg://{settings['database_username']}:{settings['database_password']}@{settings['database_host']}:{settings['database_port']}/{settings['database_name']}"
+SQLALCHEMY_DATABASE_URL = f"postgresql+psycopg://{settings.DATABASE_USERNAME}:{settings.DATABASE_PASSWORD}@{settings.DATABASE_HOST}:{settings.DATABASE_PORT}/{settings.DATABASE_NAME}"
 
 async_engine = create_async_engine(url=SQLALCHEMY_DATABASE_URL)
 
