@@ -1,7 +1,7 @@
 from datetime import timedelta
 from api.dependencies.db import get_session
 from core.config import get_settings
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException #Se agrega para manejar el error si el usuario no esta en la base de datos
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from schemas.user import Token, UserLogin
 from sqlalchemy.ext.asyncio.session import AsyncSession
