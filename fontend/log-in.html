@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+
     
     <title>Log In</title>
 </head>
@@ -26,13 +28,21 @@
                 <input type="text" name="userEmail" required />
 
                 <label for="userPassword">CONTRASEÑA</label>
-                <input type="password" name="userPassword" required/>
 
+
+                <div class="containerInputAndToggle">
+                        <input id="password" type="password" name="userPassword" required/>
+                        <button type="button" id="togglePassword" class="btnToggle"><i class="fas fa-eye-slash"></i> </button>
+                </div>
+                
+                
                 <button class="btn" type="submit">Enviar</button>
             </form>
 
             <p>Olvido su contraseña? <a href="{{ url_for('password_recovery') }}">Recuperar</a></p>
         </div>
+
+        <script src="{{ url_for('static', path='app.js') }}"></script>
     </main>
 </body>
 </html>

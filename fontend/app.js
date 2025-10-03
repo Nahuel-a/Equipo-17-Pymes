@@ -2,25 +2,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("recuperarForm");
   const container = document.getElementById("formulario-container");
 
-  if (!form) {
-    console.error("No se encontró el formulario #recuperarForm");
-    return;
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    container.innerHTML = `
-      <h2>Se ha enviado un correo de recuperación a tu email.</h2>
-      <p style="color:white; font-size:16px; margin-top:20px; text-align: center;">
-        No recibí el correo
-      </p>
-        <a href="/password-recovery">
-        <button id="reenviarForm" 
-              style="padding:10px 20px; border:none; border-radius:20px; background:#ff5722; color:white; font-weight:bold; cursor:pointer;">
-        Reenviar
-      </button> </a>
-    `;
-  });
+    //Solo ejecuta esta lógica si el formulario 'recuperarForm' existe en la página donde se esta haciendo foco.
+    if (form && container) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            container.innerHTML = `
+                <h2>Se ha enviado un correo de recuperación a tu email.</h2>
+                <p style="color:white; font-size:16px; margin-top:20px; text-align: center;">
+                    No recibí el correo
+                </p>
+                <a href="/password-recovery">
+                    <button id="reenviarForm" 
+                        style="padding:10px 20px; border:none; border-radius:20px; background:#ff5722; color:white; font-weight:bold; cursor:pointer;">
+                        Reenviar
+                    </button>
+                </a>
+            `;
+        });
+    } else {
+    }
 });
 
 // Obtengo los elementos del DOM
@@ -67,5 +67,33 @@ function checkPasswords(event) {
     }
 }
 
-// Esta función se ejecuta ANTES de que el formulario intente enviarse
-passwordForm.addEventListener('submit', checkPasswords);
+
+if (passwordForm && newPasswordInput && confirmPasswordInput && messageDisplay) {
+    // Esta función se ejecuta ANTES de que el formulario intente enviarse
+    passwordForm.addEventListener('submit', checkPasswords);
+} else {
+}
+
+
+
+
+
+
+
+
+
+
+
+// Esta función permite ver o no la contraseña 
+const passwordInput = document.getElementById('password');
+const toggleButton = document.getElementById('togglePassword');
+
+togglePassword.addEventListener('click', function (e) {
+    // 1. Alternar el tipo de input (password <-> text)
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    
+    // 2. Alternar el icono (ojo abierto <-> ojo tachado)
+    this.querySelector('i').classList.toggle('fa-eye');
+    this.querySelector('i').classList.toggle('fa-eye-slash');
+});

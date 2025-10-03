@@ -123,6 +123,22 @@ p a:hover{
     background: #e64a19;
 }
 
+.containerInputAndToggle {
+    width: 95%;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 3px;
+}
+
+.btnToggle{
+    max-width: 45px !important;
+}
+
+.btnToggle i {
+    width: 90% !important;
+}
+
 /* ------------------------FIN LOGIN Y RECOVER ACCOUNT----------------------------- */
 
 
