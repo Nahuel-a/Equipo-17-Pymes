@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <main>
+        <div class="containerInfo">
+            <div class="logo">CreditBusters</div>
+            <h1>Bienvenido, {{ user.nombre }}!</h1>
+            <p>Este es tu panel de control.</p>
+            <a href="/login" class="btn">Cerrar Sesión</a>
+        </div>
+    </main>
+</body>
+</html>

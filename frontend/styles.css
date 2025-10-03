@@ -1,0 +1,273 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    min-height: 100vh;
+    background:linear-gradient(rgba(0, 0, 0, 0.623), rgba(0, 26, 53, 0.904)), url('https://openhubnews.com/wp-content/uploads/2023/11/vista-angulo-rascacielos-1-edited.jpg') no-repeat center center/cover;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+main{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+p a{
+    color:#fff;
+}
+
+p a:hover{
+    color:#ff5722;
+}
+
+
+/* INICIO LOGIN Y RECOVER ACCOUNT*/
+
+/* APARTADO DE SECCIÓN INFO */
+.containerInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.containerInfo h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.containerInfo p {
+    margin: 10px 0 20px;
+    font-size: 14px;
+}
+
+
+/* APARTADO DE SECCIÓN FORMULARIO*/
+
+.containerLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    min-width: 25vw;
+}
+
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: 25px; */
+    /* border: 5px solid black; */
+    /* width: fit-content; */
+    padding: 30px;
+
+    
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    min-height: 50vh;
+    width: 100%;
+}
+
+.containerForm input {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    /* background-color: transparent; */
+    /* opacity: 0.2; */
+    outline: none;
+    font-size: 14px;
+}
+
+.containerForm button {
+    width: 50%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 20px;
+    background: #ff5722;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.containerForm button:hover {
+    background: #e64a19;
+}
+
+/* ------------------------FIN LOGIN Y RECOVER ACCOUNT----------------------------- */
+
+
+/* INICIO REGISTER USER Y PASSWORD USER */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Sección izquierda */
+.info {
+    flex: 1;
+    padding: 20px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.info h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.info p {
+    margin: 10px 0 20px;
+    font-size: 14px;
+}
+
+
+/* Formulario REGISTRO*/
+.formulario {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    /* backdrop-filter: blur(10px); */
+}
+
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 20px;
+    background: #ff5722;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.formulario button:hover {
+    background: #e64a19;
+}
+
+/* ------------------------FIN REGISTER USER Y PASSWORD USER----------------------------- */
+
+
+/* INICIO ESTILOS GENERALES */
+
+/* APARTADO BOTONES */
+
+.btn {
+    display: inline-block;
+    background: #ff5722;
+    padding: 10px 25px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s
+}
+
+.btn:hover {
+    background: #e64a19;
+}
+/* -----------------------FIN ESTILOS GENERALES------------------------------ */
+
+/* MEDIAS QUERIES */
+
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .containerInfo {
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .info {
+        margin-bottom: 30px;
+    }
+}
+
+/* Estilos para el mensaje de verificación */
+.message {
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724;            /* Verde oscuro */
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24;            /* Rojo oscuro */
+    border: 1px solid #f5c6cb;
+}
