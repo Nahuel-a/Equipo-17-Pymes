@@ -11,6 +11,9 @@ class Settings(BaseSettings):
 
     # Security settings
     CORS_DOMAINS: str
+    SECRET_KEY: str = "your_default_secret_key"
+    ALGORITHM: str = "HS256"
+    EXPIRE_TOKEN: int = 30  # in minutes
 
     class Config:
         env_file = "../.env"
