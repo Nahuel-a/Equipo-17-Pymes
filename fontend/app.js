@@ -88,12 +88,56 @@ if (passwordForm && newPasswordInput && confirmPasswordInput && messageDisplay) 
 const passwordInput = document.getElementById('password');
 const toggleButton = document.getElementById('togglePassword');
 
-togglePassword.addEventListener('click', function (e) {
-    // 1. Alternar el tipo de input (password <-> text)
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    
-    // 2. Alternar el icono (ojo abierto <-> ojo tachado)
-    this.querySelector('i').classList.toggle('fa-eye');
-    this.querySelector('i').classList.toggle('fa-eye-slash');
+if(passwordForm && toggleButton){
+    togglePassword.addEventListener('click', function (e) {
+        // 1. Alternar el tipo de input (password <-> text)
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        // 2. Alternar el icono (ojo abierto <-> ojo tachado)
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+} else{
+
+}
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navLinksContainer = document.getElementById('navLinksContainer');
+
+    if (hamburgerMenu && navLinksContainer) {
+        hamburgerMenu.addEventListener("click", function() {
+            navLinksContainer.classList.toggle("active");
+            // Opcional: Cambiar el ícono de hamburguesa a una 'X'
+            const icon = this.querySelector('i');
+            if (navLinksContainer.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // 'fa-times' es el ícono de una 'X'
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Opcional: Cerrar el menú si se hace clic fuera de él (para mejorar la UX)
+        document.addEventListener("click", function(event) {
+            const isClickInsideMenu = navLinksContainer.contains(event.target);
+            const isClickOnHamburger = hamburgerMenu.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnHamburger && navLinksContainer.classList.contains("active")) {
+                navLinksContainer.classList.remove("active");
+                hamburgerMenu.querySelector('i').classList.remove('fa-times');
+                hamburgerMenu.querySelector('i').classList.add('fa-bars');
+            }
+        });
+    }
 });
