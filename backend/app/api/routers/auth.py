@@ -26,11 +26,7 @@ async def login(
     #Si la autenticacion falla, no se rompe y tira error
     if not db_user:
         raise HTTPException(status_code=401, detail="Invalid credentials")
-    
-
-###########################################################
-# ACA NO PUEDE OBTENER EL TOKEN PARA PODER ACCEDER
-###########################################################     
+     
     access_token_expire = timedelta(minutes=int(settings.EXPIRE_TOKEN))
     # Create an access token for the authenticated user with a defined expiration.
     access_token = await oauth2.create_access_token(#estaba escrito create_acces_token
