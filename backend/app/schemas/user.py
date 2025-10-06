@@ -1,6 +1,5 @@
 from pydantic import BaseModel, EmailStr, field_validator
 import re
-from fastapi import HTTPException, status
 
 
 class Token(BaseModel):
