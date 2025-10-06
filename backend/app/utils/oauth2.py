@@ -1,4 +1,4 @@
-import os
+from core.config import get_settings
 from fastapi import HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from datetime import datetime, timedelta, timezone
@@ -7,19 +7,12 @@ from jwt.exceptions import PyJWTError
 
 from schemas.user import TokenData
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
-TOKEN_EXPIRE = int(os.getenv("EXPIRE_TOKEN", "30"))  # default 30 minutes if not set
-
+settings = get_settings()
 
 # Configures the OAuth2 authentication scheme to obtain access tokens.
 oauth2_schema = OAuth2PasswordBearer(tokenUrl="/api/login")
 
-
-###########################################################
-# ESTE ES EL CODIGO DONDE SE CREA EL TOKEN
-###########################################################
-async def create_acces_token(data: dict, expires_delta: timedelta | None = None):
+async def create_access_token(data: dict, expires_delta: timedelta | None = None):
     """
     Creates a JWT access token with the provided data and an optional expiration time.
 
@@ -34,19 +27,39 @@ async def create_acces_token(data: dict, expires_delta: timedelta | None = None)
     """
     try:
         to_encode = data.copy()
+
         if expires_delta:
             expire = datetime.now(timezone.utc) + expires_delta
         else:
-            expire = datetime.now(timezone.utc) + timedelta(minutes=TOKEN_EXPIRE)
-        to_encode.update({"exp": expire})
-        encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+            expire = datetime.now(timezone.utc) + timedelta(minutes=settings.EXPIRE_TOKEN)
+        
+        to_encode.update({"exp": expire})        
+        
+        if not settings.SECRET_KEY:
+            raise ValueError("SECRET_KEY is not set")
+        if not settings.ALGORITHM:
+            raise ValueError("ALGORITHM is not set")
 
+        encoded_jwt = jwt.encode(
+            to_encode,
+            settings.SECRET_KEY,
+            algorithm=settings.ALGORITHM
+        )
+       
         return encoded_jwt
 
-    except Exception as e:
+    except ValueError as ve:
+        print("ValueError:", str(ve))
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to create access token.",
+            detail=f"Configuration error: {str(ve)}",
+        )
+    except Exception as e:
+        print("Exception occurred:", str(e))
+        print("Exception type:", type(e).__name__)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to create access token: {str(e)}",
         )
 
 
@@ -64,7 +77,7 @@ async def verify_token(token: str, credentials_exception):
     """
     try:
         # Decodes the token using the secret key and the specified algorithm.
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=settings.ALGORITHM)
         email: str = payload.get("email")
         if email is None:
             raise credentials_exception
