@@ -1,0 +1,249 @@
+
+:root {
+    /* Fondos - CLARO */
+    --color-fondo-pagina: #F8F9FA;
+    /* Gris muy claro */
+    --color-fondo-formulario: #FFFFFF;
+    /* Blanco */
+    --color-fondo-input: #FFFFFF;
+
+    /* Texto - CLARO */
+    --color-texto-principal: #343a40;
+    /* Gris oscuro para el texto */
+    --color-texto-secundario: #343a40;
+
+    /* Acento y Bordes - CLARO */
+    --color-corporativo: #004AAD;
+    /* Azul Oscuro Corporativo (Acento) */
+    --color-borde: #ced4da;
+    /* Gris claro para bordes */
+
+    /* Sombras y Botones - CLARO */
+    --color-sombra: rgba(0, 0, 0, 0.1);
+    --color-btn-texto: white;
+}
+
+
+body.dark-theme {
+    /* Fondos - OSCURO */
+    --color-fondo-pagina: #1E1E2C;
+    /* Base Oscura */
+    --color-fondo-formulario: #252A36;
+    /* Contenedor Oscuro (Item) */
+    --color-fondo-input: #313745;
+    /* Fondo de campo más oscuro */
+
+    /* Texto - OSCURO */
+    --color-texto-principal: #F1F1F1;
+    --color-texto-secundario: #A9A9A9;
+
+    /* Acento y Bordes - OSCURO */
+    --color-corporativo: #FF7B00;
+    /* Naranja/Ámbar de los botones */
+    --color-borde: #444E60;
+    /* Borde oscuro para los inputs */
+
+    /* Sombras y Botones - OSCURO */
+    --color-sombra: rgba(0, 0, 0, 0.4);
+    --color-btn-texto: #252A36;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-fondo-pagina);
+    color: var(--color-texto-principal);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+
+.form-container {
+    background-color: var(--color-fondo-formulario);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--color-sombra);
+    max-width: 900px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--color-corporativo);
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-borde);
+    padding-bottom: 10px;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+}
+
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--color-fondo-input);
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--color-corporativo);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-corporativo) 30%, transparent);
+    outline: none;
+}
+
+.submit-btn {
+    background-color: var(--color-corporativo);
+    color: var(--color-btn-texto);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: color-mix(in srgb, var(--color-corporativo) 80%, black);
+}
+
+
+.theme-toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1000;
+    background-color: var(--color-corporativo);
+    color: var(--color-btn-texto);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-theme .theme-toggle-btn {
+    color: var(--color-texto-principal);
+}
+
+body.dark-theme .theme-toggle-btn:hover {
+    background-color: #d16700;
+}
+
+
+.checkbox-group {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+.checkbox-group label {
+    display: inline;
+    font-weight: normal;
+    color: var(--color-texto-principal);
+}
+
+.etiqueta-archivo {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-weight: 500;
+}
+
+.etiqueta-archivo:hover {
+    background-color: #e9e9e9;
+    border-color: var(--color-corporativo);
+    color: var(--color-corporativo);
+}
+
+body.dark-theme .checkbox-group {
+    border: 1px solid var(--color-borde);
+    background-color: var(--color-fondo-input);
+}
+
+body.dark-theme .etiqueta-archivo {
+    background-color: var(--color-fondo-input);
+    color: var(--color-texto-secundario);
+    border: 2px dashed var(--color-borde);
+}
+
+body.dark-theme .etiqueta-archivo:hover {
+    background-color: #444E60;
+    border-color: var(--color-corporativo);
+    color: var(--color-corporativo);
+}
+
+
+
+@media (max-width: 768px) {
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        padding: 20px 15px;
+    }
+
+
+    .theme-toggle-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        top: 15px;
+        right: 15px;
+    }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción | CreditBusters</title>
+    <link rel="stylesheet" href="/frontend/static/css/form-style.css">
+</head>
+
+<body>
+    <button id="theme-toggle" class="theme-toggle-btn">
+    ☀️ Modo Claro </button>
+    <div class="form-container">
+        <h2>Nuevo Crédito | <span style="color: #ff5722;"> CreditBusters </span> </h2>
+        <form action="/inscripcion" method="POST">
+
+            <h3
+                style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
+                I. Datos de la Empresa</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="razon_social">Razón Social Completa</label>
+                    <input type="text" id="razon_social" name="razon_social" required>
+                </div>
+                <div class="form-group">
+                    <label for="cuit">C.U.I.T.</label>
+                    <input type="text" id="cuit" name="cuit" pattern="\d{2}-?\d{8}-?\d{1}" title="Formato XX-XXXXXXXX-X"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="forma_juridica">Forma Jurídica</label>
+                    <select id="forma_juridica" name="forma_juridica" required>
+                        <option value="">Seleccione...</option>
+                        <option value="SA">Sociedad Anónima (S.A.)</option>
+                        <option value="SRL">Sociedad de Responsabilidad Limitada (S.R.L.)</option>
+                        <option value="SAS">Sociedad por Acciones Simplificada (S.A.S.)</option>
+                        <option value="OTRA">Otra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="clae">Actividad Principal</label>
+                    <input type="text" id="clae" name="clae" placeholder="Ej: Intermediación Financiera" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">E-mail Corporativo</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono de Contacto</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 xxxx-xxxx" required>
+                </div>
+            </div>
+
+            <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
+
+            <h3
+                style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
+                II. Domicilio Fiscal</h3>
+
+            <div class="form-row">
+                <div class="form-group" style="flex: 0.6;">
+                    <label for="calle">Calle y Número</label>
+                    <input type="text" id="calle" name="calle" required>
+                </div>
+                <div class="form-group" style="flex: 0.4;">
+                    <label for="piso_dpto">Piso/Dpto. (Opcional)</label>
+                    <input type="text" id="piso_dpto" name="piso_dpto">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="provincia">Provincia</label>
+                    <input type="text" id="provincia" name="provincia" required>
+                </div>
+                <div class="form-group">
+                    <label for="ciudad">Ciudad / Localidad</label>
+                    <input type="text" id="ciudad" name="ciudad" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cp">Código Postal</label>
+                <input type="text" id="cp" name="cp" required>
+            </div>
+
+            <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
+
+
+            <!-- PARTE OPCIONAL -- A VERIFICAR -->
+            
+        <h3 style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">III. Resumen Económico (Último Ejercicio)</h3>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="cierre_ejercicio">Fecha Cierre de Ejercicio</label>
+                <input type="date" id="cierre_ejercicio" name="cierre_ejercicio" required>
+            </div>
+            <div class="form-group">
+                <label for="ventas_anuales">Ventas Netas Anuales ($)</label>
+                <input type="number" id="ventas_anuales" name="ventas_anuales" min="0" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="activo_total">Activo Total ($)</label>
+                <input type="number" id="activo_total" name="activo_total" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="empleados">Cant. de Empleados</label>
+                <input type="number" id="empleados" name="empleados" min="1" required>
+            </div>
+        </div>
+
+        <label for="documento">Adjuntar Documento (Imagen o PDF):</label>
+        <input type="file" id="documento" name="documento" accept=".pdf, .jpg, .jpeg, .png">
+        
+        <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
+
+        <h3 style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">IV. Declaraciones</h3>
+
+        <div class="checkbox-group">
+            <div class="form-group">
+                <input type="checkbox" id="declaracion_jurada" name="declaracion_jurada" required>
+                <label for="declaracion_jurada">Declaro bajo juramento que los datos proporcionados son veraces y corresponden al último ejercicio cerrado.</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="autorizacion" name="autorizacion" required>
+                <label for="autorizacion">Autorizo a verificar la información ante organismos como AFIP, BCRA u otros registros pertinentes.</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="tyc" name="tyc" required>
+                <label for="tyc">He leído y acepto los <a href="#" style="color: var(--color-corporativo);">Términos y Condiciones de Inscripción.</a></label>
+            </div>
+        </div> 
+                
+
+
+            
+            <button type="submit" class="submit-btn">ENVIAR FORMULARIO</button>
+        </form>
+    </div>
+
+    <script src="/frontend/static/js/formApp.js"></script>
+</body>
+
+</html>
