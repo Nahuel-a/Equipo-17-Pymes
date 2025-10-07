@@ -1,0 +1,46 @@
+Plataforma Web de Onboarding de Créditos para PYMES
+Vertical: Web App
+
+Sector de Negocio: Fintech
+
+Necesidad del cliente
+Las PYMES requieren financiación rápida y procesos de solicitud de crédito menos burocráticos.
+
+Los entidades necesitan:
+
+Recopilar y validar información de manera digital.
+Reducir tiempos de aprobación.
+Mejorar la experiencia del usuario.
+Validación de mercado
+Las fintechs y bancos utilizan plataformas para construir aplicaciones de banca digital que permiten a los usuarios:
+
+Gestionar cuentas.
+Realizar transferencias.
+Solicitar créditos sin código complejo.
+Las aplicaciones de préstamos creadas con estas tecnologías:
+
+Automatizan la evaluación del riesgo.
+Reducen los tiempos de aprobación.
+Expectativa
+Desarrollar una aplicación web en la que las PYMES puedan:
+
+Solicitar créditos.
+Cargar documentos.
+Firmar digitalmente.
+Conocer el estado de su solicitud en tiempo real.
+La plataforma incluirá paneles para operadores con filtros y tareas.
+
+Entregables deseados
+Web app funcional con formulario de solicitud y carga de documentos.
+Integración con servicios de verificación de identidad (KYC/AML).
+Panel de administración para revisar solicitudes y actualizar estados.
+Manual de usuario y documentación de API.
+Funcionalidades
+Must-have
+Registro de usuario y autenticación segura.
+Formulario dinámico que guarde avances.
+Carga de documentos y firma digital.
+Nice-to-have
+Pre-evaluación de riesgo basada en reglas simples o IA opcional.
+Integración con sistemas de contabilidad de las PYMES.
+Chat de soporte (bot o humano) para dudas.

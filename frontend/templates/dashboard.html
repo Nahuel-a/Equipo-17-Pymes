@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CreditBusters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/dashboard-styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Mis Créditos</h1>
+            <div id="user-info">
+                <span id="welcome-message"></span>
+                <!-- El botón de cerrar sesión se inyectará aquí -->
+            </div>
+        </header>
+
+        <section class="dashboard-actions">
+            <button class="btn btn-primary btn-lg">
+                <i class="fas fa-plus-circle"></i> Solicitar Nuevo Crédito
+            </button>
+        </section>
+
+        <main>
+            <h2>Mis Solicitudes</h2>
+            <div class="credit-list">
+                <!-- Ejemplo 1: Aprobado -->
+                <article class="credit-card">
+                    <div class="credit-info">
+                        <h3>Crédito para Expansión</h3>
+                        <p>Monto: $50,000.00</p>
+                        <p>Fecha: 15/08/2025</p>
+                    </div>
+                    <div class="credit-status">
+                        <span class="status-badge status-approved">Aprobado</span>
+                        <a href="#" class="btn btn-secondary">Ver Detalles</a>
+                    </div>
+                </article>
+
+                <!-- Ejemplo 2: En Revisión -->
+                <article class="credit-card">
+                    <div class="credit-info">
+                        <h3>Capital de Trabajo</h3>
+                        <p>Monto: $25,000.00</p>
+                        <p>Fecha: 01/10/2025</p>
+                    </div>
+                    <div class="credit-status">
+                        <span class="status-badge status-review">En Revisión</span>
+                        <a href="#" class="btn btn-secondary">Ver Detalles</a>
+                    </div>
+                </article>
+
+                <!-- Ejemplo 3: Requiere Documentación -->
+                <article class="credit-card">
+                    <div class="credit-info">
+                        <h3>Compra de Maquinaria</h3>
+                        <p>Monto: $120,000.00</p>
+                        <p>Fecha: 28/09/2025</p>
+                    </div>
+                    <div class="credit-status">
+                        <span class="status-badge status-pending">Requiere Documentación</span>
+                        <a href="#" class="btn btn-secondary">Completar</a>
+                    </div>
+                </article>
+                
+                <!-- Ejemplo 4: Rechazado -->
+                <article class="credit-card">
+                    <div class="credit-info">
+                        <h3>Línea de Crédito Rotativa</h3>
+                        <p>Monto: $75,000.00</p>
+                        <p>Fecha: 05/09/2025</p>
+                    </div>
+                    <div class="credit-status">
+                        <span class="status-badge status-rejected">Rechazado</span>
+                        <a href="#" class="btn btn-secondary">Ver Motivo</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+    <script src="../static/js/app.js"></script>
+</body>
+</html>

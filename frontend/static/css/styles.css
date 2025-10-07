@@ -1,0 +1,370 @@
+/* --- VARIABLES GLOBALES Y RESET --- */
+:root {
+    --primary-color: #ff5722;
+    --primary-hover-color: #e64a19;
+    --secondary-color: #4a5568;
+    --text-color: #e2e8f0;
+    --text-muted-color: #a0aec0;
+    --bg-color: #1a202c;
+    --card-bg-color: rgba(26, 32, 44, 0.75);
+    --input-bg-color: #2d3748;
+    --input-border-color: #4a5568;
+    --input-focus-border-color: var(--primary-color);
+    --success-color: #38a169;
+    --error-color: #e53e3e;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- ESTILOS BASE (MOBILE-FIRST) --- */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 1)), url('https://openhubnews.com/wp-content/uploads/2023/11/vista-angulo-rascacielos-1-edited.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* --- CONTENEDOR PRINCIPAL Y TARJETA --- */
+.auth-container {
+    width: 100%;
+    max-width: 420px; /* Ancho óptimo para formularios en móvil */
+    margin: auto;
+}
+
+.auth-card {
+    background-color: var(--card-bg-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+
+.auth-info {
+    display: none; /* Oculto por defecto en móvil */
+}
+
+.auth-form-wrapper {
+    padding: 2.5rem 2rem;
+    width: 100%;
+}
+
+/* --- HEADER Y TEXTOS --- */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.auth-header h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: var(--text-muted-color);
+    font-size: 0.9rem;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+    color: var(--primary-hover-color);
+}
+
+/* --- FORMULARIO Y CAMPOS --- */
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted-color);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--input-bg-color);
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    padding-right: 3.5rem;
+}
+
+.btn-toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    height: 2.5rem;
+    width: 2.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.btn-toggle-password:hover {
+    color: var(--text-color);
+    background-color: var(--input-bg-color);
+}
+
+.form-options {
+    text-align: right;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-options a {
+    font-size: 0.875rem; /* Aumenta ligeramente el tamaño de fuente */
+    color: var(--text-muted-color);
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.form-options a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+    background-color: var(--input-bg-color); /* Fondo sutil al pasar el mouse */
+}
+
+/* --- BOTONES --- */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+}
+
+.btn-primary:disabled {
+    background-color: var(--secondary-color);
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* --- FEEDBACK Y MENSAJES --- */
+.form-feedback {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: block;
+    height: 1em;
+    transition: all 0.3s;
+}
+
+.form-feedback.valid { color: var(--success-color); }
+.form-feedback.invalid { color: var(--error-color); }
+
+#password-strength-feedback ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+}
+
+#password-strength-feedback li {
+    color: var(--text-muted-color);
+    transition: color 0.3s;
+    margin-bottom: 0.25rem;
+}
+
+#password-strength-feedback li.valid {
+    color: var(--success-color);
+    text-decoration: line-through;
+}
+
+/* --- MENSAJES GLOBALES --- */
+/* Container for inline form validation messages */
+#message-container {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Container for global flash messages (toasts) */
+#flash-message-container {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    pointer-events: none; /* Allow clicking through the container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message, .flash-message {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.flash-message {
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    pointer-events: auto; /* Re-enable pointer events for the message itself */
+    margin-bottom: 1rem;
+    max-width: 100%;
+    width: 420px;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.message.success, .flash-message.success {
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.message.error, .flash-message.error {
+    background-color: var(--error-color);
+    color: #fff;
+}
+
+/* --- SPINNER DE CARGA --- */
+.spinner {
+    display: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    width: 1.2em;
+    height: 1.2em;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- ESTILOS PARA TABLET Y DESKTOP --- */
+@media (min-width: 768px) {
+    .auth-container {
+        max-width: 960px;
+    }
+
+    .auth-card {
+        flex-direction: row;
+    }
+
+    .auth-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 3rem;
+        width: 45%;
+        background: rgba(0,0,0,0.2);
+    }
+
+    .auth-form-wrapper {
+        width: 55%;
+        padding: 3rem;
+    }
+
+    .auth-header {
+        text-align: left;
+    }
+
+    .auth-header .logo {
+        font-size: 2rem;
+    }
+
+    .auth-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .auth-links {
+        text-align: left;
+    }
+}
+

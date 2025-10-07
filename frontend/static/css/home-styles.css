@@ -1,0 +1,446 @@
+/*-------------------------------------------ESTILOS GENERALES---------------------------------------------------*/
+:root {
+    /* New Harmonized Palette */
+    --primary-color: #F25D27; /* Refined Orange */
+    --primary-hover: #D9501F;
+    --secondary-color: #007791; /* Professional Cyan-Blue */
+    
+    /* Light Theme */
+    --bg-color-light: #F8F9FA;
+    --card-bg-light: #FFFFFF;
+    --text-color-light: #212529;
+    --text-muted-light: #6c757d;
+    --border-color-light: #dee2e6;
+
+    /* Dark Theme (Also adjusted for harmony) */
+    --bg-color-dark: #1a202c;
+    --card-bg-dark: #2d3748;
+    --text-color-dark: #e2e8f0;
+    --text-muted-dark: #a0aec0;
+    --border-color-dark: #4a5568;
+
+    /* Default to Light Theme */
+    --bg-color: var(--bg-color-light);
+    --card-bg: var(--card-bg-light);
+    --text-color: var(--text-color-light);
+    --text-muted: var(--text-muted-light);
+    --border-color: var(--border-color-light);
+}
+
+body.dark-mode {
+    --bg-color: var(--bg-color-dark);
+    --card-bg: var(--card-bg-dark);
+    --text-color: var(--text-color-dark);
+    --text-muted: var(--text-muted-dark);
+    --border-color: var(--border-color-dark);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+/*-----------------------------------------FIN ESTILOS GENERALES-------------------------------------------------*/
+
+
+/*-------------------------------------------ESTILOS HEADER---------------------------------------------------*/
+
+header{
+    height: 80px;
+    width: 100%;
+    background-color: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 0 5%;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+header .logo {
+    color: var(--text-color);
+    font-size: 1.8em;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color) !important;
+}
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff !important;
+}
+
+.header-toggles {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.language-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.language-toggle:hover {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/*-----------------------------------------FIN ESTILOS HEADER-------------------------------------------------*/
+
+/* --------------------------------------------ESTILOS SECTION HOME--------------------------------------------- */
+
+
+.sectionHome{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 80px 5% 40px;
+    gap: 2rem;
+}
+
+.sectionHome div {
+    flex: 1;
+    max-width: 600px;
+}
+
+.sectionHome h1 {
+    font-size: 3.5em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.sectionHome p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+.sectionHome img{
+    max-height: 500px;
+    max-width: 50%;
+    object-fit: contain;
+}
+
+/* --------------------------------------------FIN ESTILOS SECTION HOME--------------------------------------------- */
+
+/* --------------------------------------------ESTILOS SECTION NUESTROS BENEFICIOS--------------------------------------------- */
+
+.sectionOurBeneficies {
+    background-color: var(--card-bg);
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.sectionOurBeneficies .containerBeneficies {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionOurBeneficies h2 {
+    font-size: 2.8em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.sectionOurBeneficies .subtitle {
+    font-size: 1.2em;
+    color: var(--text-muted);
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.containerGridBeneficies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.itemBeneficies {
+    background-color: var(--bg-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.itemBeneficies:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.itemBeneficies .icon {
+    font-size: 3em;
+    color: var(--secondary-color); 
+    margin-bottom: 20px;
+}
+
+.itemBeneficies h3 {
+    font-size: 1.6em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.itemBeneficies p {
+    font-size: 1em;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* --------------------------------------------FIN ESTILOS SECTION NUESTROS BENEFICIOS--------------------------------------------- */
+
+/* --------------------------------------------ESTILOS SECTION CONTACTO--------------------------------------------- */
+.section-contact {
+    padding: 80px 5%;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.section-title h2 {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: var(--text-color);
+}
+.section-title p {
+    font-size: 1.2em;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 15px auto 0;
+}
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+/* --------------------------------------------ESTILOS FOOTER--------------------------------------------- */
+.footer {
+    background-color: #1a202c;
+    color: #a0aec0;
+    padding: 60px 5% 20px;
+    text-align: center;
+}
+.footer-content h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.social-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+.social-links a {
+    font-size: 1.5rem;
+    color: #a0aec0;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: var(--primary-color);
+}
+.footer-bottom {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #4a5568;
+    font-size: 0.9rem;
+}
+
+/*-------------------------------------------MEDIA QUERIES (RESPONSIVE)---------------------------------------------------*/
+
+@media (max-width: 992px) {
+    .hamburger-menu {
+        display: block;
+    }
+    .nav-container {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+    }
+    .nav-container.active {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links a {
+        display: block;
+        padding: 1rem 0;
+        width: 100%;
+    }
+    .header-actions {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100%;
+    }
+    .sectionHome {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+    .sectionHome h1 { font-size: 2.8em; }
+    .sectionHome img { max-width: 80%; margin-top: 2rem; }
+}
+
+@media (max-width: 768px) {
+    header{
+        padding: 0 5%;
+    }
+    .sectionHome h1 { font-size: 2.2em; }
+    .sectionHome p { font-size: 1.1em; }
+    .sectionOurBeneficies h2, .section-title h2 { font-size: 2.2em; }
+    .containerGridBeneficies { grid-template-columns: 1fr; }
+    .nav-container{
+        top: 80px;
+    }
+}
+
+
+

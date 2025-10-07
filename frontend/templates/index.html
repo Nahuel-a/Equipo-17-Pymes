@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/home-styles.css">
+    <title>CreditBusters</title>
+</head>
+<body>
+    <header id="main-header">
+        <h1 class="logo">⚡ CreditBusters</h1>
+        <nav class="nav-container" id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#sectionHome" data-key="nav_home">Inicio</a></li>
+                <li><a href="#sectionOurBeneficies" data-key="nav_benefits">Beneficios</a></li>
+                <li><a href="#contactSection" data-key="nav_contact">Contacto</a></li>
+            </ul>
+            <div class="header-actions">
+                <a href="log-in.html" class="btn btn-secondary" data-key="nav_login">Log In</a>
+                <a href="register-user.html" class="btn btn-primary" data-key="nav_register">Registrarse</a>
+            </div>
+        </nav>
+        <div class="header-toggles">
+            <button id="lang-toggle" class="language-toggle" aria-label="Change language">EN</button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="hamburgerMenu" class="hamburger-menu" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="sectionHome" class="sectionHome">
+            <div>
+                <h1 data-key="home_title">Tu PYME merece <br> financiación sin <br> demoras.</h1>
+                <p data-key="home_subtitle1">En CreditBuster eliminamos la burocracia para que tu negocio crezca sin limite.</p>
+                <p data-key="home_subtitle2">Solicita tu credito hoy mismo.</p>
+            </div>
+
+            <img src="../static/images/imgSectionHome.png" alt="image of section home">
+        </section>
+
+        <section id="sectionOurBeneficies" class="sectionOurBeneficies">
+            <div class="containerBeneficies">
+                <h2 data-key="benefits_title">¿Por qué CreditBusters?</h2>
+                <p class="subtitle" data-key="benefits_subtitle">Descubre cómo facilitamos el crecimiento de tu PYME.</p>
+                <div class="containerGridBeneficies">
+                    <div class="itemBeneficies">
+                        <i class="fas fa-bolt icon"></i>
+                        <h3 data-key="benefit1_title">Rapidez Inigualable</h3>
+                        <p data-key="benefit1_text">Obtén una respuesta en minutos, no en semanas. El tiempo es dinero para tu PYME.</p>
+                    </div>
+                    <div class="itemBeneficies">
+                        <i class="fas fa-handshake-alt icon"></i>
+                        <h3 data-key="benefit2_title">Procesos Sencillos</h3>
+                        <p data-key="benefit2_text">Menos papeles, más soluciones. Olvídate de la burocracia excesiva.</p>
+                    </div>
+                    <div class="itemBeneficies">
+                        <i class="fas fa-coins icon"></i>
+                        <h3 data-key="benefit3_title">Financiación a Medida</h3>
+                        <p data-key="benefit3_text">Encuentra el plan de financiación perfecto que se ajuste a tus necesidades y capacidad.</p>
+                    </div>
+                    <div class="itemBeneficies">
+                        <i class="fas fa-shield-alt icon"></i>
+                        <h3 data-key="benefit4_title">Seguridad y Confianza</h3>
+                        <p data-key="benefit4_text">Tus datos y operaciones están protegidos con los más altos estándares de seguridad.</p>
+                    </div>
+                    <div class="itemBeneficies">
+                        <i class="fas fa-headset icon"></i>
+                        <h3 data-key="benefit5_title">Soporte Dedicado</h3>
+                        <p data-key="benefit5_text">Un equipo de expertos listo para ayudarte en cada paso del proceso.</p>
+                    </div>
+                    <div class="itemBeneficies">
+                        <i class="fas fa-chart-line icon"></i>
+                        <h3 data-key="benefit6_title">Impulsa tu Crecimiento</h3>
+                        <p data-key="benefit6_text">Recibe el capital necesario para expandirte, innovar y alcanzar tus objetivos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contactSection" class="section-contact">
+            <div class="section-title">
+                <h2 data-key="contact_title">Contáctanos</h2>
+                <p data-key="contact_subtitle">¿Tienes alguna pregunta? Estamos aquí para ayudarte.</p>
+            </div>
+            <div class="contact-container">
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="contact-name" data-key="form_name">Nombre</label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email" data-key="form_email">Email</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message" data-key="form_message">Mensaje</label>
+                        <textarea id="contact-message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-key="form_button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>⚡ CreditBusters</h3>
+            <p data-key="footer_subtitle">Finanzas inteligentes para un mundo en movimiento.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p data-key="footer_copy">&copy; 2025 CreditBusters. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburgerMenu');
+            const navMenu = document.getElementById('nav-menu');
+            const header = document.getElementById('main-header');
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const langToggle = document.getElementById('lang-toggle');
+
+            // Hamburger Menu
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Theme Toggle
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+            };
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.contains('dark-mode');
+                    const newTheme = isDark ? 'light' : 'dark';
+                    localStorage.setItem('theme', newTheme);
+                    applyTheme(newTheme);
+                });
+            }
+
+            // Language Toggle
+            const translations = {
+                es: {
+                    nav_home: 'Inicio',
+                    nav_benefits: 'Beneficios',
+                    nav_contact: 'Contacto',
+                    nav_login: 'Log In',
+                    nav_register: 'Registrarse',
+                    home_title: 'Tu PYME merece <br> financiación sin <br> demoras.',
+                    home_subtitle1: 'En CreditBuster eliminamos la burocracia para que tu negocio crezca sin limite.',
+                    home_subtitle2: 'Solicita tu credito hoy mismo.',
+                    benefits_title: '¿Por qué CreditBusters?',
+                    benefits_subtitle: 'Descubre cómo facilitamos el crecimiento de tu PYME.',
+                    benefit1_title: 'Rapidez Inigualable',
+                    benefit1_text: 'Obtén una respuesta en minutos, no en semanas. El tiempo es dinero para tu PYME.',
+                    benefit2_title: 'Procesos Sencillos',
+                    benefit2_text: 'Menos papeles, más soluciones. Olvídate de la burocracia excesiva.',
+                    benefit3_title: 'Financiación a Medida',
+                    benefit3_text: 'Encuentra el plan de financiación perfecto que se ajuste a tus necesidades y capacidad.',
+                    benefit4_title: 'Seguridad y Confianza',
+                    benefit4_text: 'Tus datos y operaciones están protegidos con los más altos estándares de seguridad.',
+                    benefit5_title: 'Soporte Dedicado',
+                    benefit5_text: 'Un equipo de expertos listo para ayudarte en cada paso del proceso.',
+                    benefit6_title: 'Impulsa tu Crecimiento',
+                    benefit6_text: 'Recibe el capital necesario para expandirte, innovar y alcanzar tus objetivos.',
+                    contact_title: 'Contáctanos',
+                    contact_subtitle: '¿Tienes alguna pregunta? Estamos aquí para ayudarte.',
+                    form_name: 'Nombre',
+                    form_email: 'Email',
+                    form_message: 'Mensaje',
+                    form_button: 'Enviar Mensaje',
+                    footer_subtitle: 'Finanzas inteligentes para un mundo en movimiento.',
+                    footer_copy: '&copy; 2025 CreditBusters. Todos los derechos reservados.'
+                },
+                en: {
+                    nav_home: 'Home',
+                    nav_benefits: 'Benefits',
+                    nav_contact: 'Contact',
+                    nav_login: 'Log In',
+                    nav_register: 'Sign Up',
+                    home_title: 'Your SME deserves <br> financing without <br> delays.',
+                    home_subtitle1: 'At CreditBuster, we eliminate bureaucracy so your business can grow without limits.',
+                    home_subtitle2: 'Apply for your credit today.',
+                    benefits_title: 'Why CreditBusters?',
+                    benefits_subtitle: 'Discover how we facilitate the growth of your SME.',
+                    benefit1_title: 'Unmatched Speed',
+                    benefit1_text: 'Get a response in minutes, not weeks. Time is money for your SME.',
+                    benefit2_title: 'Simple Processes',
+                    benefit2_text: 'Less paperwork, more solutions. Forget about excessive bureaucracy.',
+                    benefit3_title: 'Tailored Financing',
+                    benefit3_text: 'Find the perfect financing plan that fits your needs and capacity.',
+                    benefit4_title: 'Security and Trust',
+                    benefit4_text: 'Your data and operations are protected with the highest security standards.',
+                    benefit5_title: 'Dedicated Support',
+                    benefit5_text: 'A team of experts ready to help you every step of the way.',
+                    benefit6_title: 'Boost Your Growth',
+                    benefit6_text: 'Receive the necessary capital to expand, innovate, and achieve your goals.',
+                    contact_title: 'Contact Us',
+                    contact_subtitle: 'Do you have any questions? We are here to help you.',
+                    form_name: 'Name',
+                    form_email: 'Email',
+                    form_message: 'Message',
+                    form_button: 'Send Message',
+                    footer_subtitle: 'Intelligent finance for a world in motion.',
+                    footer_copy: '&copy; 2025 CreditBusters. All rights reserved.'
+                }
+            };
+
+            const setLanguage = (lang) => {
+                document.querySelectorAll('[data-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        elem.innerHTML = translations[lang][key];
+                    }
+                });
+                document.documentElement.lang = lang;
+                if (langToggle) {
+                    langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+                }
+            };
+
+            if (langToggle) {
+                langToggle.addEventListener('click', () => {
+                    const currentLang = document.documentElement.lang || 'es';
+                    const newLang = currentLang === 'es' ? 'en' : 'es';
+                    localStorage.setItem('language', newLang);
+                    setLanguage(newLang);
+                });
+            }
+
+            // Load initial theme and language
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedLang = localStorage.getItem('language') || 'es';
+            applyTheme(savedTheme);
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

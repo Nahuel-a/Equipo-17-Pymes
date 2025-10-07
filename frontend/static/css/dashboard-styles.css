@@ -1,0 +1,146 @@
+/* Estilos para el Dashboard */
+body {
+    display: block;
+    align-items: initial;
+    justify-content: initial;
+    background-image: none;
+    background-color: var(--bg-color);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--input-border-color);
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    color: var(--text-color);
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#welcome-message {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.dashboard-actions {
+    margin-bottom: 2.5rem;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-lg i {
+    margin-right: 0.5rem;
+}
+
+main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted-color);
+}
+
+.credit-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.credit-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--input-border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.credit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.credit-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.credit-info p {
+    font-size: 0.9rem;
+    color: var(--text-muted-color);
+    margin: 0;
+}
+
+.credit-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-approved {
+    background-color: rgba(56, 161, 105, 0.2);
+    color: #38a169;
+}
+
+.status-review {
+    background-color: rgba(49, 130, 206, 0.2);
+    color: #3182ce;
+}
+
+.status-pending {
+    background-color: rgba(221, 107, 32, 0.2);
+    color: #dd6b20;
+}
+
+.status-rejected {
+    background-color: rgba(229, 62, 62, 0.2);
+    color: #e53e3e;
+}
+
+@media (max-width: 768px) {
+    .credit-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .credit-status {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+}

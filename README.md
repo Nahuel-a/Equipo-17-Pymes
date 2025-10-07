@@ -1,30 +1,70 @@
-# Equipo-17-Pymes
-Plataforma Web de Onboarding de Créditos para PYMES.
+# Plataforma Web de Onboarding de Créditos para PYMES
 
-## Estado Actual del Proyecto
+## Descripción General del Frontend
 
-A fecha actual, el proyecto ha alcanzado un hito importante: la integración del frontend y el backend. La aplicación ahora funciona como un servicio web cohesivo donde el backend de FastAPI se encarga de servir las vistas del frontend directamente.
+El frontend ha sido desarrollado como una interfaz de usuario moderna, responsiva y rica en funcionalidades, centrada en proporcionar una experiencia de usuario fluida e intuitiva. La estructura ha sido reorganizada para separar claramente las distintas áreas de la aplicación (página de inicio, flujo de autenticación y dashboard de usuario).
 
-- **Backend (FastAPI):** Proporciona la API y la lógica de negocio.
-- **Frontend (HTML/CSS/JS):** Define la interfaz de usuario.
-- **Integración:** El backend sirve las páginas del frontend utilizando el motor de plantillas Jinja2, creando una única aplicación.
+Utiliza HTML5, CSS3 y JavaScript puro (ES6+) para crear una experiencia interactiva sin depender de frameworks externos, lo que garantiza un rendimiento óptimo y un mantenimiento sencillo.
 
 ---
 
-## Estructura del Proyecto
+## Características Principales
+
+A continuación se detallan las funcionalidades implementadas en el frontend:
+
+### 1. Flujo de Autenticación Completo
+Se ha prototipado un ciclo de autenticación completo, simulando la gestión de usuarios a través de `localStorage`.
+
+- **Registro de Usuario (`register-user.html`):**
+  - Formulario de registro con validación en tiempo real.
+  - **Control de Contraseña Robusta:** Requisitos visuales que el usuario debe cumplir (mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial).
+
+- **Inicio de Sesión (`log-in.html`):**
+  - Valida las credenciales del usuario contra los datos guardados.
+  - Redirige al `dashboard.html` tras un inicio de sesión exitoso.
+
+- **Recuperación de Contraseña:**
+  - Proceso de dos pasos que comienza en `password-user.html`.
+  - Permite al usuario establecer una nueva contraseña en `reset-password.html`, aplicando las mismas reglas de seguridad que en el registro.
+
+### 2. Dashboard de Usuario (`dashboard.html`)
+- **Ruta Protegida:** Solo accesible después de un inicio de sesión exitoso. Los usuarios no autenticados son redirigidos al login.
+- **Vista Conceptual:** Presenta un diseño conceptual de un panel de control donde el usuario puede ver el estado de sus solicitudes de crédito (Aprobado, En Revisión, etc.) y acceder a acciones principales como "Solicitar Nuevo Crédito".
+- **Gestión de Sesión:** Muestra el nombre del usuario y un botón para cerrar sesión, limpiando los datos de la sesión simulada.
+
+### 3. Página de Inicio Dinámica (`index.html`)
+- **Diseño Profesional:** Una landing page pública con un diseño moderno y responsivo.
+- **Secciones Informativas:** Incluye secciones de "Beneficios" y un formulario de "Contacto" estático.
+
+### 4. Mejoras de Experiencia de Usuario (UX)
+- **Modo Claro y Oscuro:** Un interruptor en la cabecera permite al usuario cambiar entre un tema visual claro y uno oscuro. La preferencia se guarda en `localStorage` para persistir entre visitas.
+- **Soporte Multi-idioma (EN/ES):** Se ha implementado un sistema de traducción simple que permite cambiar el idioma de todo el contenido de la página de inicio entre español e inglés. La selección también se guarda en `localStorage`.
+- **Notificaciones Dinámicas:** Se utilizan mensajes "flash" para proporcionar feedback al usuario tras acciones importantes (ej. registro exitoso, cierre de sesión).
+
+---
+
+## Estructura del Frontend
+
+La carpeta `frontend` ha sido reestructurada para mejorar la organización y escalabilidad del código:
 
 ```
-/
-├── backend/
-│   ├── app/
-│   │   ├── main.py       # Archivo principal de FastAPI con las rutas
-│   │   └── ...           # Resto de la lógica del backend
-│   └── pyproject.toml    # Dependencias y configuración del proyecto Python
-│
-└── fontend/
-    ├── *.html            # Plantillas de la interfaz de usuario
-    ├── styles.css        # Estilos
-    └── app.js            # Lógica del lado del cliente
+frontend/
+├── static/
+│   ├── css/
+│   │   ├── home-styles.css     # Estilos exclusivos para la página de inicio (index.html)
+│   │   ├── styles.css          # Estilos globales para el flujo de autenticación
+│   │   └── dashboard-styles.css # Estilos para el dashboard de usuario
+│   ├── js/
+│   │   └── app.js              # Lógica JS para autenticación y dashboard
+│   └── images/
+│       └── ...
+└── templates/
+    ├── index.html              # Página de inicio pública con tema claro/oscuro e idiomas
+    ├── log-in.html             # Formulario de inicio de sesión
+    ├── register-user.html      # Formulario de registro con validación de clave
+    ├── password-user.html      # Formulario para iniciar la recuperación de clave
+    ├── reset-password.html     # Formulario para establecer una nueva clave
+    └── dashboard.html          # Dashboard conceptual del usuario
 ```
 
 ---
@@ -64,29 +104,23 @@ Para ejecutar la aplicación en tu entorno de desarrollo, sigue estos pasos.
 
 ## Siguientes Pasos
 
-Ahora que la base de la aplicación está funcionando, los siguientes pasos se centran en implementar la funcionalidad principal y prepararla para producción.
+Ahora que el frontend está completamente prototipado, los siguientes pasos se centran en conectar la interfaz con una lógica de backend real.
 
 ### 1. Implementar los Endpoints de la API
 
-Actualmente, la aplicación solo sirve las páginas (rutas GET). El siguiente paso crucial es implementar las rutas POST que recibirán los datos de los formularios de la interfaz de usuario.
-
-- **Rutas a crear:**
+- **Conectar Formularios:** Reemplazar la lógica simulada de `localStorage` en `app.js` y el script de `index.html` con llamadas `fetch` a los endpoints de la API del backend.
+- **Rutas a crear/conectar:**
     - `POST /login`: Para manejar el inicio de sesión de usuarios.
     - `POST /register`: Para registrar nuevos usuarios.
     - `POST /password-recovery`: Para gestionar la recuperación de contraseñas.
-- **Lógica:** Estos endpoints deberán validar los datos de entrada, interactuar con la base de datos y devolver respuestas adecuadas (por ejemplo, tokens de autenticación o mensajes de error).
 
 ### 2. Conectar y Utilizar la Base de Datos
 
-El proyecto ya tiene la configuración básica para conectarse a una base de datos PostgreSQL, pero aún no se está utilizando.
-
-- **Activación:** Se debe utilizar la dependencia `get_session` para inyectar sesiones de base de datos en los endpoints de la API.
-- **Modelos de Datos:** Crear los modelos de SQLAlchemy (por ejemplo, `User`) que representen las tablas de la base de datos.
-- **Operaciones CRUD:** Implementar las funciones para Crear, Leer, Actualizar y Eliminar registros en la base de datos (por ejemplo, crear un nuevo usuario, buscar uno existente, etc.).
+- **Activación:** Utilizar la dependencia `get_session` para inyectar sesiones de base de datos en los endpoints de la API.
+- **Modelos de Datos:** Crear los modelos de SQLAlchemy (ej. `User`) que representen las tablas de la base de datos.
+- **Operaciones CRUD:** Implementar la lógica para gestionar los datos de usuario y solicitudes de crédito.
 
 ### 3. Despliegue con Docker
 
-Una vez que la funcionalidad principal esté implementada y probada, el paso final será preparar la aplicación para el despliegue en un entorno de producción.
+- **Contenerización:** Utilizar Docker para empaquetar la aplicación, garantizando un despliegue consistente y escalable.
 
-- **Contenerización:** La estrategia recomendada es utilizar Docker para empaquetar la aplicación en un contenedor. Esto asegura que el entorno sea consistente y facilita el despliegue en cualquier proveedor de la nube (AWS, Google Cloud, etc.).
-- **Servidor de Producción:** Se utilizará un servidor ASGI de producción como Gunicorn para ejecutar la aplicación dentro del contenedor, garantizando rendimiento y estabilidad.
