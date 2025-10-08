@@ -9,12 +9,14 @@
     <title>CreditBusters</title>
 </head>
 <body>
+    <button id="btn-subir" title="Subir" class="btn-subir">↑</button>
     <header id="main-header">
         <h1 class="logo">⚡ CreditBusters</h1>
         <nav class="nav-container" id="nav-menu">
             <ul class="nav-links">
                 <li><a href="#sectionHome" data-key="nav_home">Inicio</a></li>
                 <li><a href="#sectionOurBeneficies" data-key="nav_benefits">Beneficios</a></li>
+                <li><a href="#sectionAboutUs">Sobre Nosotros</a></li>
                 <li><a href="#contactSection" data-key="nav_contact">Contacto</a></li>
             </ul>
             <div class="header-actions">
@@ -83,13 +85,51 @@
             </div>
         </section>
 
+        <section id="sectionAboutUs" class="sectionAboutUs">
+            <div class="containerAboutUsInfoText">
+                <h2 data-key="aboutUsTittle">CreditBusters: Impulsando el Corazón de tu Negocio</h2>
+                
+                <p data-key="aboutUsSubtittle" class="subtitle">Nuestra misión: Financiación ágil y transparente para que las PYMES no se detengan.</p>
+
+                <p data-key="aboutUsText">Sabemos que el acceso a financiación es uno de los mayores desafíos para las PYMES. Las opciones tradicionales son lentas, burocráticas y a menudo excluyentes. Por eso, en CreditBusters, nacimos con la visión de romper esas barreras. Creemos firmemente que cada gran idea y cada pequeño negocio merecen la oportunidad de crecer sin obstáculos. Nuestra plataforma está diseñada para ser la solución que las PYMES necesitan: rápida, sencilla y justa.</p>
+
+                <h3 data-key="aboutUsTittleH3">¿Listo para impulsar tu negocio?</h3>
+                <span data-key="aboutUsBtn" class="btnSectionAboutUs"><a href="../templates/log-in.html">Comenzar!</a></span>
+            </div>
+
+            <div class="containerAboutUsInfoImg">
+                <img src="../static/images/imgSectionAboutUs.png" alt="image of section About Us">
+                
+                <div class="aboutUsGrid"> 
+                    <span class="value-item">
+                        <i class="fas fa-bolt icon"></i>
+                        <h3 data-key="value1Tittle">Agilidad</h3>
+                        <p data-key="value1Text">Respuesta en minutos.</p>
+                    </span>
+
+                    <span class="value-item">
+                        <i class="fas fa-handshake-alt icon"></i>
+                        <h3 data-key="value2Tittle">Transparencia</h3>
+                        <p data-key="value2Text">Sin letras pequeñas ni sorpresas.</p>
+                    </span>
+
+                    <span class="value-item">
+                        <i class="fas fa-shield-alt icon"></i>
+                        <h3 data-key="value3Tittle">Confianza</h3>
+                        <p data-key="value3Text">Tu éxito es nuestro éxito.</p>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
         <section id="contactSection" class="section-contact">
             <div class="section-title">
                 <h2 data-key="contact_title">Contáctanos</h2>
                 <p data-key="contact_subtitle">¿Tienes alguna pregunta? Estamos aquí para ayudarte.</p>
             </div>
             <div class="contact-container">
-                <form class="contact-form" onsubmit="event.preventDefault();">
+                <form id="formContact"  action="https://formspree.io/f/xldplywz" method="POST" class="contact-form">
                     <div class="form-group">
                         <label for="contact-name" data-key="form_name">Nombre</label>
                         <input type="text" id="contact-name" name="name" required>
@@ -184,6 +224,17 @@
                     benefit5_text: 'Un equipo de expertos listo para ayudarte en cada paso del proceso.',
                     benefit6_title: 'Impulsa tu Crecimiento',
                     benefit6_text: 'Recibe el capital necesario para expandirte, innovar y alcanzar tus objetivos.',
+                    aboutUsTittle: 'CreditBusters: Impulsando el Corazón de tu Negocio',
+                    aboutUsSubtittle: 'Nuestra misión: Financiación ágil y transparente para que las PYMES no se detengan.',
+                    aboutUsText: 'Sabemos que el acceso a financiación es uno de los mayores desafíos para las PYMES. Las opciones tradicionales son lentas, burocráticas y a menudo excluyentes. Por eso, en CreditBusters, nacimos con la visión de romper esas barreras. Creemos firmemente que cada gran idea y cada pequeño negocio merecen la oportunidad de crecer sin obstáculos. Nuestra plataforma está diseñada para ser la solución que las PYMES necesitan: rápida, sencilla y justa.',
+                    aboutUsTittleH3: '¿Listo para impulsar tu negocio?',
+                    aboutUsBtn: 'Comenzar!',
+                    value1Tittle: 'Agilidad',
+                    value1Text: 'Respuesta en minutos.',
+                    value2Tittle: 'Transparencia',
+                    value2Text: 'Sin letras pequeñas ni sorpresas.',
+                    value3Tittle: 'Confianza',
+                    value3Text: 'Tu éxito es nuestro éxito.',
                     contact_title: 'Contáctanos',
                     contact_subtitle: '¿Tienes alguna pregunta? Estamos aquí para ayudarte.',
                     form_name: 'Nombre',
@@ -216,6 +267,17 @@
                     benefit5_text: 'A team of experts ready to help you every step of the way.',
                     benefit6_title: 'Boost Your Growth',
                     benefit6_text: 'Receive the necessary capital to expand, innovate, and achieve your goals.',
+                    aboutUsTittle: 'CreditBusters: Boosting the Heart of Your Business',
+                    aboutUsSubtittle: 'Our mission: Agile and transparent financing so SMEs dont stop.',
+                    aboutUsText: 'We know that access to financing is one of the biggest challenges for SMEs. Traditional options are slow, bureaucratic, and often exclusionary. Thats why, at CreditBusters, we were founded with the vision of breaking down those barriers. We firmly believe that every great idea and every small business deserves the opportunity to grow without obstacles. Our platform is designed to be the solution SMEs need: fast, simple, and fair.',
+                    aboutUsTittleH3: 'Ready to boost your business?',
+                    aboutUsBtn: 'Begin!',
+                    value1Tittle: 'Agility',
+                    value1Text: 'Response in minutes.',
+                    value2Tittle: 'Transparency',
+                    value2Text: 'No fine print or surprises.',
+                    value3Tittle: 'Trust',
+                    value3Text: 'Your success is our success.',                    
                     contact_title: 'Contact Us',
                     contact_subtitle: 'Do you have any questions? We are here to help you.',
                     form_name: 'Name',
@@ -255,6 +317,68 @@
             applyTheme(savedTheme);
             setLanguage(savedLang);
         });
+
+        // MANEJO DE EVENTO SUBMIT EN FORMULARIO DE CONTACTO
+
+        const formContact = document.getElementById('formContact');
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const messageInput = document.getElementById('contact-message');
+
+        if(formContact){
+            formContact.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Evita el envío por defecto del formulario
+
+                const formData = new FormData(formContact);
+                const data = Object.fromEntries(formData.entries()); // Convierte los datos a un objeto
+
+                try {
+                    const response = await fetch(formContact.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Indica que estás enviando JSON
+                        'Accept': 'application/json'       // Indica que esperas una respuesta JSON
+                    },
+                    body: JSON.stringify(data) // Convierte el objeto a una cadena JSON
+                    });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    // Redirigir o mostrar un mensaje de éxito
+                    alert('Formulario enviado exitosamente', result);
+                    //Limpiamos los campos en caso de éxito
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    messageInput.value = '';
+                } else {
+                    console.error('Error al enviar el formulario:', response.statusText);
+                    // Mostrar un mensaje de error
+                }
+                } catch (error) {
+                    console.error('Error en la solicitud:', error);
+                }
+            });
+        } else {
+
+        }
+
+        const btnSubir = document.getElementById("btn-subir");
+
+        window.onscroll = ()=> {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btnSubir.classList.add("show");
+            } else {
+                btnSubir.classList.remove("show");
+            }
+        };
+
+        btnSubir.addEventListener("click", ()=> {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
     </script>
 </body>
 </html>

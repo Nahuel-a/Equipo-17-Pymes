@@ -58,6 +58,34 @@ a{
 /*-----------------------------------------FIN ESTILOS GENERALES-------------------------------------------------*/
 
 
+/*----------------------------------------- ESTILOS BOTON SUBIR ARRIBA-------------------------------------------------*/
+/* BOTON SUBIR ARRIBA */
+.btn-subir {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 99; /* Asegura que esté sobre otros elementos */
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: var(--bg-color-light);
+    border: none;
+    width: 60px; 
+    height: 60px; 
+    border-radius: 30px;
+    font-size: 35px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-subir.show {
+    display: flex; /* Muestra el botón */
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+/*-----------------------------------------FIN ESTILOS BOTON SUBIR ARRIBA-------------------------------------------------*/
+
 /*-------------------------------------------ESTILOS HEADER---------------------------------------------------*/
 
 header{
@@ -290,6 +318,166 @@ header .logo {
 
 /* --------------------------------------------FIN ESTILOS SECTION NUESTROS BENEFICIOS--------------------------------------------- */
 
+
+
+
+
+
+/* --------------------------------------------ESTILOS SECTION SOBRE NOSOTROS--------------------------------------------- */
+.sectionAboutUs {
+    padding: 80px 20px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px; 
+    flex-wrap: wrap; 
+    margin-bottom: 60px;
+}
+
+.containerAboutUsInfoText {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    min-width: 450px;
+    max-width: 55%;
+}
+
+.sectionAboutUs h2 {
+    font-size: 3.5em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    max-width: 700px; 
+    font-weight: 600;
+}
+
+.containerAboutUsInfoText p:nth-of-type(2) { 
+    font-size: 1.2em;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.containerAboutUsInfoText h3 { 
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+}
+
+/* Botón "Comenzar!" */
+.btnSectionAboutUs {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; 
+    padding: 0 30px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.btnSectionAboutUs a {
+    font-size: 1.1em;
+    color: #f0f0f0;
+    font-weight: 600;
+}
+
+.btnSectionAboutUs:hover {
+    background: var(--primary-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(255, 87, 34, 0.3); 
+}
+
+.containerAboutUsInfoImg {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    flex: 1; 
+    min-width: 350px;
+    max-width: 45%; 
+}
+
+.containerAboutUsInfoImg img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+
+.aboutUsGrid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    width: 100%;
+    justify-items: center;
+}
+
+.value-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 180px;
+    width: 180px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1); 
+    background-color: var(--bg-color); 
+}
+
+.value-item h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.value-item p {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    line-height: 1.3;
+}
+
+.value-item .icon {
+    font-size: 3em; 
+    color: var(--secondary-color); 
+}
+
+.value-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+/* --------------------------------------------FIN ESTILOS SECTION SOBRE NOSOTROS--------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --------------------------------------------ESTILOS SECTION CONTACTO--------------------------------------------- */
 .section-contact {
     padding: 80px 5%;
@@ -427,6 +615,59 @@ header .logo {
     }
     .sectionHome h1 { font-size: 2.8em; }
     .sectionHome img { max-width: 80%; margin-top: 2rem; }
+        .sectionAboutUs {
+        flex-direction: column;
+        text-align: center; 
+        padding: 50px 3%;
+    }
+    .containerAboutUsInfoText, .containerAboutUsInfoImg {
+        width: 100%; 
+        max-width: 700px; 
+        min-width: unset;
+        margin: 0 auto;
+    }
+    .containerAboutUsInfoText {
+        margin-bottom: 40px; 
+        align-items: center; 
+    }
+    .sectionAboutUs h2 {
+        font-size: 2.5em;
+    }
+    .subtitle {
+        font-size: 1.2em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .containerAboutUsInfoText p:nth-of-type(1) {
+        font-size: 1em;
+    }
+    .containerAboutUsInfoText h3 {
+        font-size: 1.4em;
+    }
+    .containerAboutUsInfoImg img {
+        max-width: 80%; 
+        height: auto;
+        margin-bottom: 30px;
+    }
+    .aboutUsGrid {
+        grid-template-columns: repeat(3, 1fr); 
+        justify-content: center; 
+        gap: 15px;
+    }
+    .value-item {
+        height: 150px;
+        width: 150px;
+        padding: 10px;
+    }
+    .value-item h3 {
+        font-size: 1em;
+    }
+    .value-item p {
+        font-size: 0.8em;
+    }
+    .value-item .icon {
+        font-size: 2.2em;
+    }
 }
 
 @media (max-width: 768px) {
@@ -439,6 +680,29 @@ header .logo {
     .containerGridBeneficies { grid-template-columns: 1fr; }
     .nav-container{
         top: 80px;
+    }
+    .sectionAboutUs {
+        padding: 40px 3%;
+    }
+    .sectionAboutUs h2 {
+        font-size: 2.2em;
+    }
+    .aboutUsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+        gap: 10px;
+    }
+    .value-item {
+        height: 133px;
+        width: 133px;
+    }
+    .value-item h3 {
+        font-size: 0.9em;
+    }
+    .value-item p {
+        font-size: 0.72em;
+    }
+    .value-item .icon {
+        font-size: 2em;
     }
 }
 
