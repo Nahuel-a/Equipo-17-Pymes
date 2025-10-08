@@ -1,11 +1,11 @@
+from core.database import Base
 from sqlalchemy import Column, String, Text, DateTime, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 import uuid
 from datetime import datetime
 
-Base = declarative_base()
+
 
 # Assuming external models for Application and Operator (minimal stubs)
 class Application(Base):
