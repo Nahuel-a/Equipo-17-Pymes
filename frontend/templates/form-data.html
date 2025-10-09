@@ -10,14 +10,14 @@
 
 <body>
     <button id="theme-toggle" class="theme-toggle-btn">
-    ☀️ Modo Claro </button>
+        ☀️ Modo Claro </button>
     <div class="form-container">
         <h2>Nuevo Crédito | <span style="color: #ff5722;"> CreditBusters </span> </h2>
         <form action="/inscripcion" method="POST">
 
             <h3
                 style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
-                I. Datos de la Empresa</h3>
+                1. Datos de la Empresa</h3>
 
             <div class="form-row">
                 <div class="form-group">
@@ -63,7 +63,7 @@
 
             <h3
                 style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
-                II. Domicilio Fiscal</h3>
+                2. Domicilio Fiscal</h3>
 
             <div class="form-row">
                 <div class="form-group" style="flex: 0.6;">
@@ -99,58 +99,96 @@
 
             <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
 
+            <h3
+                style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
+                3. Solicitud de Crédito</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="monto_solicitado">Monto Solicitado ($)</label>
+                    <input type="number" id="monto_solicitado" name="monto_solicitado" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="plazo">Plazo Estimado (meses)</label>
+                    <input type="number" id="plazo" name="plazo" min="1" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="destino_credito">Destino del Crédito</label>
+                    <input type="text" id="destino_credito" name="destino_credito"
+                        placeholder="Ej: compra de maquinaria, capital de trabajo..." required>
+                </div>
+                <div class="form-group">
+                    <label for="garantias">Garantías Ofrecidas (opcional)</label>
+                    <input type="text" id="garantias" name="garantias" placeholder="Ej: bienes, aval, etc.">
+                </div>
+            </div>
+
+            <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
+
+
+
 
             <!-- PARTE OPCIONAL -- A VERIFICAR -->
-            
-        <h3 style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">III. Resumen Económico (Último Ejercicio)</h3>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label for="cierre_ejercicio">Fecha Cierre de Ejercicio</label>
-                <input type="date" id="cierre_ejercicio" name="cierre_ejercicio" required>
-            </div>
-            <div class="form-group">
-                <label for="ventas_anuales">Ventas Netas Anuales ($)</label>
-                <input type="number" id="ventas_anuales" name="ventas_anuales" min="0" required>
-            </div>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label for="activo_total">Activo Total ($)</label>
-                <input type="number" id="activo_total" name="activo_total" min="0" required>
-            </div>
-            <div class="form-group">
-                <label for="empleados">Cant. de Empleados</label>
-                <input type="number" id="empleados" name="empleados" min="1" required>
-            </div>
-        </div>
+            <h3
+                style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
+                4. Resumen Económico (Último Ejercicio)</h3>
 
-        <label for="documento">Adjuntar Documento (Imagen o PDF):</label>
-        <input type="file" id="documento" name="documento" accept=".pdf, .jpg, .jpeg, .png">
-        
-        <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cierre_ejercicio">Fecha Cierre de Ejercicio</label>
+                    <input type="date" id="cierre_ejercicio" name="cierre_ejercicio" required>
+                </div>
+                <div class="form-group">
+                    <label for="ventas_anuales">Ventas Netas Anuales ($)</label>
+                    <input type="number" id="ventas_anuales" name="ventas_anuales" min="0" required>
+                </div>
+            </div>
 
-        <h3 style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">IV. Declaraciones</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="activo_total">Activo Total ($)</label>
+                    <input type="number" id="activo_total" name="activo_total" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="empleados">Cant. de Empleados</label>
+                    <input type="number" id="empleados" name="empleados" min="1" required>
+                </div>
+            </div>
 
-        <div class="checkbox-group">
-            <div class="form-group">
-                <input type="checkbox" id="declaracion_jurada" name="declaracion_jurada" required>
-                <label for="declaracion_jurada">Declaro bajo juramento que los datos proporcionados son veraces y corresponden al último ejercicio cerrado.</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="autorizacion" name="autorizacion" required>
-                <label for="autorizacion">Autorizo a verificar la información ante organismos como AFIP, BCRA u otros registros pertinentes.</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="tyc" name="tyc" required>
-                <label for="tyc">He leído y acepto los <a href="#" style="color: var(--color-corporativo);">Términos y Condiciones de Inscripción.</a></label>
-            </div>
-        </div> 
-                
+            <label for="documento">Adjuntar Documento (Imagen o PDF):</label>
+            <input type="file" id="documento" name="documento" accept=".pdf, .jpg, .jpeg, .png">
+
+            <hr style="border-top: 1px solid var(--color-borde); margin: 30px 0;">
 
 
-            
+
+
+            <h3
+                style="color: var(--color-corporativo); border-bottom: 1px solid var(--color-borde); padding-bottom: 5px;">
+                5. Declaraciones</h3>
+
+
+            <div class="checkbox-group">
+                <div class="form-group">
+                    <input type="checkbox" id="declaracion_jurada" name="declaracion_jurada" required>
+                    <label for="declaracion_jurada">Declaro bajo juramento que los datos proporcionados son veraces y
+                        corresponden al último ejercicio cerrado.</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="autorizacion" name="autorizacion" required>
+                    <label for="autorizacion">Autorizo a verificar la información ante organismos como AFIP, BCRA u
+                        otros registros pertinentes.</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="tyc" name="tyc" required>
+                    <label for="tyc">He leído y acepto los <a href="#" style="color: var(--color-corporativo);">Términos
+                            y Condiciones de Inscripción.</a></label>
+                </div>
+            </div>
+
             <button type="submit" class="submit-btn">ENVIAR FORMULARIO</button>
         </form>
     </div>
