@@ -1,0 +1,279 @@
+:root {
+    --primary-color: #ff5722;
+    --primary-hover-color: #e64a19;
+    --secondary-color: #4a5568;
+    --text-color: #e2e8f0;
+    --text-muted-color: #a0aec0;
+    --bg-color: #1a202c;
+    --card-bg-color: rgba(26, 32, 44, 0.75);
+    --input-bg-color: #2d3748;
+    --input-border-color: #4a5568;
+    --input-focus-border-color: var(--primary-color);
+    --success-color: #38a169;
+    --error-color: #e53e3e;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* Estilos Base y Responsive */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Fundamental para responsive */
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+}
+
+h1, h2 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.messageInfo{
+    color: var(--text-color);
+}
+
+/* --------------------------------------------ESTILOS HEADER--------------------------------------------- */
+.dashboardHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--input-border-color);
+    margin-bottom: 2rem;
+}
+
+.dashboardHeader h1 {
+    color: var(--text-color);
+}
+
+#userInfo{
+    display: flex ;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.btnSecondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.btnSecondary:hover {
+    background-color: var(--primary-color);
+    color: #fff !important;
+}
+
+#welcomeMessage {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+/* --------------------------------------------FIN ESTILOS HEADER--------------------------------------------- */
+
+
+/* --------------------------------------------ESTILOS SECTION PRESTAMOS--------------------------------------------- */
+.sectionLending{
+    display: flex;
+}
+
+.mainContent {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start; /* Alinea el menú arriba */
+}
+/* --------------------------------------------FIN SECTION PRESTAMOS--------------------------------------------- */
+
+
+/* -------------------------------------------- ESTILOS MENU EMPRESAS--------------------------------------------- */
+#listCompanies {
+    width: 250px;
+    min-width: 200px;
+    background-color: var(--secondary-color); 
+    padding: 0;
+    margin-bottom: 20px;
+}
+.companieItem {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-left: 5px solid transparent;
+    transition: background-color 0.3s, border-left-color 0.3s;
+    user-select: none;
+    border-bottom: 2px solid black;
+    color: var(--primary-color);
+    background-color: transparent;
+}
+.companieItem:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+.companieItem.active {
+    background-color:  var(--primary-color);
+    color: var(--secondary-color);
+    border-left-color: var(--secondary-color);
+}
+#dashboardContent {
+    flex-grow: 1;
+}
+/* --------------------------------------------FIN ESTILOS MENU EMPRESA--------------------------------------------- */
+
+
+/* --------------------------------------------ESTILOS TARJETAS DE PRESTAMO--------------------------------------------- */
+
+.containerDashboard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.applicationCard {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex-basis: 100%; 
+    max-width: 950px;
+    pointer-events: none; 
+    opacity: 0.9;
+    position: relative;
+}
+
+.infoContainer{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--text-muted-color);
+}
+
+.infoContainer div{
+    flex: 1; 
+    min-width: 45%;
+}
+
+.applicationCard h3 {
+    margin-top: 0;
+    color: var(--text-color);
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    pointer-events: none;
+}
+
+.applicationCard p {
+    margin: 5px 0;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.applicationStatus {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.statusEarring { background-color: #ffc107; color: #333; }          /* Estado pendiente */         
+.statusApproved { background-color: #28a745; color: white; }
+.statusRejected { background-color: #dc3545; color: white; }
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: all;
+}
+
+.actions div{
+    display: flex;
+    gap: 20px;
+}
+
+.actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.approve { background-color: #28a745; color: white; }
+.approve:hover { background-color: #218838; }
+.decline { background-color: #dc3545; color: white; }
+.decline:hover { background-color: #c82333; }
+.hidden { display: none; }
+/* --------------------------------------------FIN ESTILOS TARJETAS DE PRESTAMO--------------------------------------------- */
+
+
+/*-------------------------------------------MEDIA QUERIES (RESPONSIVE)---------------------------------------------------*/
+
+@media (max-width: 800px) {
+    .containerDashboard {
+        justify-content: space-around;
+    }
+    .applicationCard {
+        flex-basis: 45%;
+    }
+}
+
+@media (max-width: 650px) {
+    .mainContent {
+        flex-direction: column;
+    }
+
+    .sectionLending{
+        flex-direction: column;
+    }
+    
+    #listCompanies {
+        width: 100%;
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        display: flex; 
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .companieItem {
+        flex-grow: 1;
+        text-align: center;
+        border-left: none;
+        border-bottom: 5px solid transparent;
+    }
+
+    .applicationCard {
+        flex-basis: 100%;
+    }
+
+    .infoContainer {
+        flex-direction: column;
+    }
+    .infoContainer div {
+        min-width: 100%;
+    }
+}

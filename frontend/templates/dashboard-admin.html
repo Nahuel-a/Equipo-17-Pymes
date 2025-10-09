@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Aprobación de Préstamos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/dashboard-admin.css"> 
+</head>
+<body>
+    <header class="dashboardHeader">
+        <div id="userInfo">
+            <span id="welcomeMessage"></span>
+            <!-- El botón de cerrar sesión se inyectará aquí -->
+        </div>
+    </header>
+    
+    <h1>Panel de Administración de Préstamos</h1>
+    <h2>Solicitudes de Préstamo (<span id="empresa-actual-nombre">Seleccione una Empresa</span>)</h2>
+    
+    <section class="sectionLending">
+
+        <div class="mainContent">
+            <div id="listCompanies">
+                <div style="padding: 15px; text-align: center;">Cargando empresas...</div>
+            </div>
+        </div>
+        
+        <div id="dashboardContent">
+            <div id="dashboardContainer" class="containerDashboard">
+                </div>
+            <p id="noDataMessage" class="hidden">No hay solicitudes de préstamo pendientes para la empresa seleccionada.</p>
+        </div>
+
+    </section>
+
+    <script src="../static/js/dashboardAdmin.js"></script> 
+</body>
+</html>
+
+
