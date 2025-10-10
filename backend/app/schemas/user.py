@@ -1,5 +1,8 @@
+from typing import Optional
+from models.enums import RoleUser
 from pydantic import BaseModel, EmailStr, field_validator
 import re
+from uuid import UUID
 
 
 class Token(BaseModel):
@@ -9,6 +12,25 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: EmailStr | None = None
+
+
+class PasswordResetRequest(BaseModel):
+    email: EmailStr
+
+
+class VerifyResetCode(BaseModel):
+    email: EmailStr
+    reset_code: str
+
+
+class PasswordReset(BaseModel):
+    email: EmailStr
+    reset_code: str
+    new_password: str
+    
+    @field_validator("new_password")
+    def validate_password(cls, password: str) -> str:
+        return PasswordValidator.validate_password(password)
 
 
 class PasswordValidator:
@@ -52,6 +74,7 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str
+    role: Optional[RoleUser] = RoleUser.USER
     
     @field_validator("password")
     def validate_password(cls, password: str) -> str:
@@ -59,7 +82,8 @@ class UserCreate(UserBase):
 
 
 class UserSchema(UserBase):
-    id: int
+    id: UUID
+    role: RoleUser
 
     class Config:
         from_attributes = True
