@@ -4,6 +4,8 @@ from sqlalchemy import pool, engine_from_config
 from core.config import get_settings
 from core.database import Base
 from models.user import User  # noqa: F401
+from models.pyme import Pymes  # noqa: F401
+from models.credits import Credits  # noqa: F401
 
 settings = get_settings()
 
@@ -77,7 +79,10 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, 
+            target_metadata=target_metadata,
+            compare_server_default=False,
+            compare_type=True  # Enable type comparison for autogenerate
         )
 
         with context.begin_transaction():
