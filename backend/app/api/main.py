@@ -1,4 +1,4 @@
-from api.routers import user, auth, pyme, credits
+from api.routers import user, auth, pyme, credits, firmas
 from fastapi import APIRouter, status
 
 api_router = APIRouter()
@@ -35,6 +35,15 @@ api_router.include_router(
     credits.router,
     prefix="/api/credits",
     tags=["Credits"],
+    responses={
+        status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+    },
+)
+
+api_router.include_router(
+    firmas.router,
+    prefix="/api/firmas",
+    tags=["Firmas Digitales"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
     },
