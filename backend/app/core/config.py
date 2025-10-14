@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     EXPIRE_TOKEN: int = 30  # in minutes
 
+    # Email settings
+    SENDGRID_API_KEY: str
+
     class Config:
         env_file = "../.env"
         case_sensitive = True
