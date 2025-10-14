@@ -24,7 +24,7 @@ async def create_user(
 ):
     """
     Create a new user. Checks if the user already exists by email.
-    If it doesn't exist, creates the user and automatically assigns a MyCourses to it.
+    If it doesn't exist, creates the user with a hashed password.
     """
     exist_user = await UserCrud(db).get_by_attribute("email", user_create.email)
     if exist_user:
@@ -73,10 +73,22 @@ async def get_user_id(
 
 async def send_reset_code_email(email: str, reset_code: str):
     """
-    In a real-world environment, the code will be sent via email. 
-    This is a simulated function that will eventually be replaced by a real email service.
+    Send password reset code via email using SendGrid service.
     """
-    logging.info(f"Password reset code for {email}: {reset_code}")
+    try:
+        from utils.email_service import email_service
+        
+        success = await email_service.send_password_reset_email(email, reset_code)
+        
+        if success:
+            logging.info(f"Password reset email sent successfully to {email}")
+        else:
+            logging.error(f"Failed to send password reset email to {email}")
+            
+    except Exception as e:
+        logging.error(f"Error sending password reset email to {email}: {str(e)}")
+        # En caso de error, también log del código para debugging (remover en producción)
+        logging.info(f"Password reset code for {email}: {reset_code}")
 
 
 @router.post("/password-reset-request/", status_code=status.HTTP_200_OK)
@@ -101,7 +113,7 @@ async def request_password_reset(
     # Add email sending task to background tasks
     background_tasks.add_task(send_reset_code_email, reset_request.email, reset_code)
 
-    return {"message": "If your email is registered, you will receive a recovery code", "reset_code": reset_code}  # Remove "reset_code" in production
+    return {"message": "If your email is registered, you will receive a recovery code"}
 
 
 @router.post("/verify-reset-code/", status_code=status.HTTP_200_OK)
