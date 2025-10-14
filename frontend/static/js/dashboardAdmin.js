@@ -80,6 +80,206 @@ const INICIAL_SOLICITUDES_DATA = [
         "activoTotal": 8000000.00,
         "ventasNetasAnuales": 18000000.00,
         "cantEmpleados": 10
+    },
+        {
+        "id": 105,
+        "empresa": "Nexora Global",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 106,
+        "empresa": "Luzalma Studio",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 107,
+        "empresa": "VerdeNorte S.A",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 108,
+        "empresa": "BlueCactus Tech",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 109,
+        "empresa": "Aurum & Co",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 110,
+        "empresa": "Fractalízate",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 111,
+        "empresa": "Montela Group",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 112,
+        "empresa": "EcoSenda",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 113,
+        "empresa": "NovaLuz Ingeniería",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
+    },
+        {
+        "id": 114,
+        "empresa": "Kirova Market",
+        "estado": "PENDIENTE",
+        "razonSocial": "Otra Comercializadora",
+        "formaJuridica": "S.A.",
+        "email": "info@otra.com",
+        "cuit": "25-11223344-5",
+        "actividadPrincipal": "Venta minorista",
+        "telefono": "54-11-9988-7766",
+        "calleYNumero": "Calle Falsa 123",
+        "pisoDpto": "Oficina 1",
+        "provincia": "Santa Fe",
+        "ciudadLocalidad": "Rosario",
+        "codigoPostal": "2000",
+        "fechaCierreEjercicio": "30/11",
+        "activoTotal": 8000000.00,
+        "ventasNetasAnuales": 18000000.00,
+        "cantEmpleados": 10
     }
 ];
 
@@ -101,10 +301,10 @@ function saveSolicitudes(solicitudes) {
 // 3. LÓGICA DE NAVEGACIÓN POR EMPRESA
 
 function updateActiveItem(clickedItem) {
-    const listCompanies = document.getElementById('listCompanies');
-    if (!listCompanies) return;
+    const companyList = document.getElementById('companyList');
+    if (!companyList) return;
 
-    listCompanies.querySelectorAll('.companieItem').forEach(item => {
+    companyList.querySelectorAll('.company-item').forEach(item => {
         item.classList.remove('active');
     });
     if (clickedItem) {
@@ -113,32 +313,49 @@ function updateActiveItem(clickedItem) {
 }
 
 function setuplistCompanies() {
-    const listCompanies = document.getElementById('listCompanies');
+    const companyList = document.getElementById('companyList'); 
     const allRequests = getSolicitudes();
     
     const companies = [...new Set(allRequests.map(sol => sol.empresa))].sort();
-    listCompanies.innerHTML = ''; 
+    
+    companyList.innerHTML = ''; 
 
     if (companies.length === 0) {
-        listCompanies.innerHTML = '<div class="companieItem">No hay datos.</div>';
+        companyList.innerHTML = '<li class="company-item">No hay datos.</li>';
         return;
     }
 
     companies.forEach(empresa => {
-        const item = document.createElement('div');
-        item.className = 'companieItem';
+        const item = document.createElement('li');
+        item.className = 'company-item';
         item.textContent = empresa;
         item.dataset.empresa = empresa; 
 
         item.addEventListener('click', (event) => {
             companieActive = empresa;
             renderDashboard();
-            updateActiveItem(event.target);
+            updateActiveItem(event.currentTarget);
         });
-        listCompanies.appendChild(item);
+        companyList.appendChild(item);
     });
 }
 
+function setupSearchFilter() {
+    const searchInput = document.getElementById('searchCompany');
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const companies = document.querySelectorAll('.company-item');
+
+        companies.forEach(company => {
+            const companyName = company.textContent.toLowerCase();
+            if (companyName.includes(searchTerm)) {
+                company.style.display = 'flex';
+            } else {
+                company.style.display = 'none';
+            }
+        });
+    });
+}
 
 //FUNCIONES PRINCIPALES DEL DASHBOARD
 
@@ -279,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     setuplistCompanies();
+    setupSearchFilter();
     
     if (!companieActive) {
         renderDashboard();

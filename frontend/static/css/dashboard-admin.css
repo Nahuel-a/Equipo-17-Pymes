@@ -14,11 +14,10 @@
     --font-family: 'Poppins', sans-serif;
 }
 
-/* Estilos Base y Responsive */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Fundamental para responsive */
+    box-sizing: border-box;
 }
 
 body {
@@ -52,10 +51,11 @@ h1, h2 {
     color: var(--text-color);
 }
 
-#userInfo{
+.userInfo{
     display: flex ;
     align-items: center;
     gap: 1.5rem;
+    margin: 15px 15px 0 15px;
 }
 
 .btn {
@@ -99,47 +99,129 @@ h1, h2 {
     display: flex;
     gap: 20px;
     max-width: 1200px;
-    margin: 0 auto;
-    align-items: flex-start; /* Alinea el menú arriba */
+    align-items: flex-start;
 }
 /* --------------------------------------------FIN SECTION PRESTAMOS--------------------------------------------- */
 
 
 /* -------------------------------------------- ESTILOS MENU EMPRESAS--------------------------------------------- */
-#listCompanies {
-    width: 250px;
-    min-width: 200px;
-    background-color: var(--secondary-color); 
+.sidebar {
+    width: 280px;
+    min-width: 240px;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.sidebar-header {
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--input-border-color);
+}
+
+.sidebar-header h2 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.searchCompany {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--input-bg-color);
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    outline: none; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.searchCompany:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2); 
+}
+
+.companyList {
+    list-style: none;
     padding: 0;
-    margin-bottom: 20px;
+    margin: 0;
+    max-height: 60vh; 
+    overflow-y: auto; /* Scroll si el contenido es mucho */
 }
-.companieItem {
-    padding: 15px 20px;
+
+/* Estilo de la barra de scroll */
+.companyList::-webkit-scrollbar {
+    width: 6px;
+}
+.companyList::-webkit-scrollbar-track {
+    background: transparent;
+}
+.companyList::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.company-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 10px;
+    margin: 4px 0;
     cursor: pointer;
-    font-weight: bold;
-    border-left: 5px solid transparent;
-    transition: background-color 0.3s, border-left-color 0.3s;
+    font-weight: 500;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
     user-select: none;
-    border-bottom: 2px solid black;
+    color: var(--text-muted-color);
+}
+
+/* Icono genérico para cada empresa */
+.company-item::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    background-color: var(--text-muted-color); /* El color del icono */
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-briefcase' viewBox='0 0 16 16'%3E%3Cpath d='M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5'/%3E%3C/svg%3E");
+    mask-size: contain;
+    transition: background-color 0.2s ease;
+}
+
+
+.company-item:hover {
+    background-color: rgba(255, 87, 34, 0.1);
     color: var(--primary-color);
-    background-color: transparent;
 }
-.companieItem:hover {
+
+.company-item:hover::before {
+    background-color: var(--primary-color); /* El icono también cambia de color */
+}
+
+.company-item.active {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: white;
+    font-weight: 700;
+    border-left-color: #007bff; 
 }
-.companieItem.active {
-    background-color:  var(--primary-color);
-    color: var(--secondary-color);
-    border-left-color: var(--secondary-color);
-}
-#dashboardContent {
-    flex-grow: 1;
+
+.company-item.active::before {
+    background-color: white; /* El icono se vuelve blanco cuando está activo */
 }
 /* --------------------------------------------FIN ESTILOS MENU EMPRESA--------------------------------------------- */
 
 
 /* --------------------------------------------ESTILOS TARJETAS DE PRESTAMO--------------------------------------------- */
+.contentDashboard{
+    width: 100%;
+}
 
 .containerDashboard {
     display: flex;
@@ -236,12 +318,17 @@ h1, h2 {
     .containerDashboard {
         justify-content: space-around;
     }
+    
     .applicationCard {
         flex-basis: 45%;
     }
 }
 
 @media (max-width: 650px) {
+    .userInfo{
+        width: 100%;
+        justify-content: space-between;
+    }
     .mainContent {
         flex-direction: column;
     }
@@ -250,15 +337,6 @@ h1, h2 {
         flex-direction: column;
     }
     
-    #listCompanies {
-        width: 100%;
-        min-width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-        display: flex; 
-        flex-wrap: wrap;
-        gap: 5px;
-    }
     .companieItem {
         flex-grow: 1;
         text-align: center;
@@ -273,7 +351,24 @@ h1, h2 {
     .infoContainer {
         flex-direction: column;
     }
+
     .infoContainer div {
         min-width: 100%;
+    }
+
+    .sidebar{
+        width: 100%;
+    }
+
+    .companyList{
+        height: 300px;
+    }
+
+    .messageInfo{
+        text-align: center;
+    }
+
+    .containerDashboard{
+        margin: 15px;
     }
 }
