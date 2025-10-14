@@ -22,32 +22,31 @@ async def create_pyme(
     current_user: User = Depends(validate_authenticate_user),
 ):
     """
-    Crear una nueva Pyme. Solo un usuario autenticado puede crear una Pyme.
-    La Pyme está asociada al usuario actual y un usuario solo puede tener una Pyme.
+    Create a new SME. Only an authenticated user can create an SME.
+    The SME is associated with the current user, and a user can only have one SME.
     """
-    # Verificar si el usuario ya tiene una Pyme
+    # Check if the user already has an SME
     existing_pyme = await PymeCrud(db).get_by_attribute("user_id", current_user.id)
     if existing_pyme:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"El usuario ya tiene una Pyme registrada",
+            detail=f"User already has a registered SME",
         )
-    
-    # Si se especificó un user_id diferente al del usuario actual, verificar permisos
+
+    # If a different user_id is specified than the current user, check permissions
     if pyme_create.user_id != current_user.id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="No puede crear una Pyme para otro usuario",
+            detail="Cannot create an SME for another user",
         )
     
     try:
-        # Crear la Pyme
         new_pyme = await PymeCrud(db).create(pyme_create)
         return new_pyme
     except SQLAlchemyError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error al crear la Pyme",
+            detail="Error creating SME",
         )
 
 
@@ -62,21 +61,21 @@ async def get_pyme(
     current_user: User = Depends(validate_authenticate_user),
 ):
     """
-    Obtener una Pyme por su ID. El usuario debe estar autenticado.
+    Obtain an SME by its ID. The user must be authenticated.
     """
     try:
         pyme = await PymeCrud(db).get(pyme_id)
         if pyme is None:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Pyme con ID {pyme_id} no encontrada",
+                detail=f"SME with ID {pyme_id} not found",
             )
-        
-        # Verificar que el usuario actual sea el dueño de la Pyme o tenga permisos especiales
+
+        # Verify that the current user is the owner of the SME or has special permissions
         if pyme.user_id != current_user.id:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="No tiene permisos para ver esta Pyme",
+                detail="You do not have permission to view this SME",
             )
             
         return pyme
@@ -88,5 +87,5 @@ async def get_pyme(
     except SQLAlchemyError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error al obtener la Pyme",
+            detail="Error obtaining SME",
         )

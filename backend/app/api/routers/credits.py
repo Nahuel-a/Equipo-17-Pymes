@@ -34,30 +34,6 @@ async def create_pyme(
     Raises:
         HTTPException: Si hay problemas al verificar o crear la Pyme
     """
-    # # Verificar si el usuario ya tiene una Pyme
-    # existing_pyme = await PymeCrud(db).get_by_attribute("user_id", current_user.id)
-    
-    # if existing_pyme:
-    #     # El usuario ya tiene una Pyme
-    #     return existing_pyme
-    
-    # # El usuario no tiene una Pyme, crear una nueva
-    # if pyme_id:
-    #     # Verificar si la Pyme con este ID ya existe
-    #     pyme = await PymeCrud(db).get(pyme_id)
-    #     if pyme:
-    #         # Si existe y no tiene usuario asignado, asignarla
-    #         if not pyme.user_id:
-    #             await PymeCrud(db).update_attribute(pyme.id, "user_id", current_user.id)
-    #             return pyme
-    #         else:
-    #             # Si ya tiene usuario asignado, error
-    #             raise HTTPException(
-    #                 status_code=status.HTTP_403_FORBIDDEN,
-    #                 detail="La Pyme proporcionada ya está asignada a otro usuario",
-    #             )
-    
-    # Crear una nueva Pyme
     pyme_create = PymeCreate(
         **pyme_data.model_dump(),
         user_id=current_user.id
@@ -85,44 +61,42 @@ async def create_credit(
     current_user: User = Depends(validate_authenticate_user),
 ):
     """
-    Crear un nuevo crédito. El usuario debe estar autenticado.
-    Si el usuario no tiene una Pyme, se crea automáticamente con los datos proporcionados.
-    Si el usuario ya tiene una Pyme, se verifica que corresponda con la pyme_id.
+    Create a new loan. The user must be authenticated.
+    If the user does not have an SME, it is automatically created with the information provided.
+    If the user already has an SME, it is verified that it matches the pyme_id.
     """
     try:
-        # Verificar si el usuario tiene una Pyme
+        # Check if the user has an SME
         existing_pyme = await PymeCrud(db).get_by_attribute("user_id", current_user.id)
         
-        # Si el usuario ya tiene una Pyme
+        # If the user already has an SME
         if existing_pyme:
-            # Verificar que corresponda con la pyme_id proporcionada
+            # Verify that it matches the pyme_id provided
             if str(existing_pyme.id) != str(credit_create.pyme_id):
                 raise HTTPException(
                     status_code=status.HTTP_403_FORBIDDEN,
-                    detail="No puede crear créditos para otra Pyme. Debe usar su Pyme registrada.",
+                    detail="You cannot create loans for another SME. You must use your registered SME.",
                 )
-        # Si el usuario no tiene una Pyme y se proporcionaron datos, crear una
+        # If the user does not have an SME and data is provided, create one
         elif pyme_data:
             new_pyme = await create_pyme(db, current_user, pyme_data)
-            # Actualizar la pyme_id en el crédito
+            # Update the pyme_id in the credit
             credit_create.pyme_id = new_pyme.id
-        # Si no se proporcionaron datos de Pyme, error
+        # If no Pyme data is provided, error
         else:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Debe proporcionar datos para crear una Pyme o tener una Pyme existente",
+                detail="You must provide data to create an SME or have an existing SME",
             )
         
-        # Crear el crédito
         new_credit = await CreditsCrud(db).create(credit_create)
         return new_credit
         
     except SQLAlchemyError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error al crear el crédito",
+            detail="Error creating credit",
         )
-
 
 @router.get(
     "/{credit_id}",
@@ -135,24 +109,24 @@ async def get_credit(
     current_user: User = Depends(validate_authenticate_user),
 ):
     """
-    Obtener un crédito por su ID. El usuario debe estar autenticado y ser el dueño de la Pyme asociada al crédito.
+    Obtain credit using your ID. The user must be authenticated and the owner of the SME associated with the credit.
     """
     try:
         credit = await CreditsCrud(db).get(credit_id)
         if credit is None:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Crédito con ID {credit_id} no encontrado",
+                detail=f"Credit with ID {credit_id} not found",
             )
-        
-        # Obtener la Pyme asociada al crédito
+
+        # Get the SME associated with the credit
         pyme = await PymeCrud(db).get(credit.pyme_id)
-        
-        # Verificar que el usuario actual sea el dueño de la Pyme
+
+        # Verify that the current user is the owner of the SME
         if pyme.user_id != current_user.id:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="No tiene permisos para ver este crédito",
+                detail="You do not have permission to view this credit",
             )
             
         return credit
@@ -165,7 +139,7 @@ async def get_credit(
     except SQLAlchemyError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error al obtener el crédito",
+            detail="Error obtaining credit",
         )
 
 
@@ -179,28 +153,28 @@ async def get_all_credits(
     current_user: User = Depends(validate_authenticate_user),
 ):
     """
-    Obtener todos los créditos asociados a la Pyme del usuario autenticado.
-    Si el usuario no tiene una Pyme, devuelve una lista vacía.
+    Obtain all credits associated with the authenticated user's SME.
+    If the user does not have an SME, return an empty list.
     """
     try:
-        # Verificar si el usuario tiene una Pyme
+        # Check if the user has an SME
         pyme = await PymeCrud(db).get_by_attribute("user_id", current_user.id)
         if not pyme:
             return []
-        
-        # Obtener todos los créditos de esa Pyme
+
+        # Get all credits from that SME
         try:
             credits = await CreditsCrud(db).get_all_by_attribute("pyme_id", pyme.id)
-            return list(credits)  # Aseguramos que se devuelva una lista
+            return list(credits) 
         except AttributeError as ae:
-            # En caso de que el modelo Credits no tenga el atributo pyme_id (lo cual no debería pasar)
+            # In case the Credits model does not have the pyme_id attribute (which shouldn't happen)
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Error en el modelo de datos: el atributo 'pyme_id' no existe en Credits",
+                detail="Data model error: 'pyme_id' attribute does not exist in Credits",
             )
         
     except SQLAlchemyError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error al obtener los créditos: {str(e)}",
+            detail=f"Error obtaining credits: {str(e)}",
         )
