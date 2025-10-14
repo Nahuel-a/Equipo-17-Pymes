@@ -1,5 +1,4 @@
-from api.dependencies.db import get_session
-from fastapi import Depends, HTTPException, status
+from fastapi import HTTPException, status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from crud.user import UserCrud
@@ -8,7 +7,7 @@ from argon2.exceptions import VerifyMismatchError
 
 
 async def is_authenticate(
-    email: str, password: str, db: AsyncSession = Depends(get_session)
+    email: str, password: str, db: AsyncSession
 ):
     """
     Authenticates a user by verifying their email and password.
