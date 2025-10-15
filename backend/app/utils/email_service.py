@@ -164,3 +164,7 @@ class EmailService:
             html_content=html_content,
             plain_text_content=plain_text_content
         )
+
+
+# instance of the email service to be used throughout the application
+email_service = EmailService()

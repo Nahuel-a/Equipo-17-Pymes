@@ -7,6 +7,7 @@ from schemas.user import UserSchema, UserCreate, PasswordResetRequest, VerifyRes
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from utils.password import hash
 from utils.reset_password import generate_password_reset_code, verify_password_reset_code, clear_password_reset_code
+from utils.email_service import email_service
 import logging
 import uuid
 
@@ -75,9 +76,7 @@ async def send_reset_code_email(email: str, reset_code: str):
     """
     Send password reset code via email using SendGrid service.
     """
-    try:
-        from utils.email_service import email_service
-        
+    try:        
         success = await email_service.send_password_reset_email(email, reset_code)
         
         if success:
