@@ -377,6 +377,7 @@ header .logo {
 
 /* Botón "Comenzar!" */
 .btnSectionAboutUs {
+    color: black;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -391,7 +392,7 @@ header .logo {
 
 .btnSectionAboutUs a {
     font-size: 1.1em;
-    color: #f0f0f0;
+    color: black;
     font-weight: 600;
 }
 
@@ -703,6 +704,10 @@ header .logo {
     }
     .value-item .icon {
         font-size: 2em;
+    }
+
+    .btn-primary, .btn-secondary{
+        text-align: center;
     }
 }
 
