@@ -6,6 +6,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from schemas.pyme import PymeSchema, PymeCreate
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from models.user import User
+from models.enums import RoleUser
+from utils.permissions import check_resource_ownership
+from typing import List
 import uuid
 
 router = APIRouter()
@@ -62,6 +65,8 @@ async def get_pyme(
 ):
     """
     Obtain an SME by its ID. The user must be authenticated.
+    - ADMIN/SUPERADMIN: Can view any SME
+    - USER: Can only view their own SME
     """
     try:
         pyme = await PymeCrud(db).get(pyme_id)
@@ -71,14 +76,16 @@ async def get_pyme(
                 detail=f"SME with ID {pyme_id} not found",
             )
 
-        # Verify that the current user is the owner of the SME or has special permissions
-        if pyme.user_id != current_user.id:
+        if current_user.role in [RoleUser.ADMIN, RoleUser.SUPERADMIN]:
+            return pyme
+        elif await check_resource_ownership(current_user, str(pyme.user_id)):
+            return pyme
+        else:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="You do not have permission to view this SME",
             )
             
-        return pyme
     except ValueError as ve:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -88,4 +95,33 @@ async def get_pyme(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Error obtaining SME",
+        )
+
+
+@router.get(
+    "/",
+    status_code=status.HTTP_200_OK,
+    response_model=List[PymeSchema],
+)
+async def get_all_pymes(
+    db: AsyncSession = Depends(get_session),
+    current_user: User = Depends(validate_authenticate_user),
+):
+    """
+    Get SMEs based on user role:
+    - ADMIN/SUPERADMIN: Can view all SMEs
+    - USER: Can only view their own SME
+    """
+    try:
+        if current_user.role in [RoleUser.ADMIN, RoleUser.SUPERADMIN]:
+            pymes = await PymeCrud(db).get_all()
+            return list(pymes)
+        else:
+            pyme = await PymeCrud(db).get_by_attribute("user_id", current_user.id)
+            return [pyme] if pyme else []
+            
+    except SQLAlchemyError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Error obtaining SMEs",
         )
