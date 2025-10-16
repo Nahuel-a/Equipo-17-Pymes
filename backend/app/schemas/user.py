@@ -90,9 +90,28 @@ class UserSchema(UserBase):
 
 
 class UserLogin(BaseModel):
+
     email: EmailStr
     password: str
     
     @field_validator("password")
     def validate_password(cls, password: str) -> str:
         return PasswordValidator.validate_password(password)
+    
+class RoleUpdateRequest(BaseModel):
+    """Schema for role update requests"""
+    user_id: UUID
+    new_role: RoleUser
+
+
+class UserRoleResponse(BaseModel):
+    """Response schema for user role information"""
+    id: UUID
+    first_name: str
+    last_name: str
+    email: str
+    role: RoleUser
+    is_active: bool
+    
+    class Config:
+        from_attributes = True
