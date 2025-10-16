@@ -148,7 +148,6 @@ class BaseCrud(ABC):
         try:
             self.session.add(new_instance)
             await self.session.commit()
-            await self.session.refresh(new_instance)
             return new_instance
         except SQLAlchemyError as e:
             await self.session.rollback()
@@ -175,7 +174,6 @@ class BaseCrud(ABC):
                 for key, value in data.model_dump().items():
                     setattr(instance, key, value)
                 await self.session.commit()
-                await self.session.refresh(instance)
                 return instance
             else:
                 raise ValueError(f"Instance with id {model_id} not found")
@@ -238,7 +236,6 @@ class BaseCrud(ABC):
                 
             setattr(instance, attribute, value)
             await self.session.commit()
-            await self.session.refresh(instance)
             return instance
             
         except SQLAlchemyError as e:
