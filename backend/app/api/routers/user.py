@@ -8,6 +8,8 @@ from sqlalchemy.ext.asyncio.session import AsyncSession
 from utils.password import hash
 from utils.reset_password import generate_password_reset_code, verify_password_reset_code, clear_password_reset_code
 from utils.email_service import email_service
+from utils.permissions import check_resource_ownership
+from models.user import User
 import logging
 import uuid
 
@@ -46,10 +48,11 @@ async def create_user(
 async def get_user_id(
     user_id: uuid.UUID,
     db: AsyncSession = Depends(get_session),
-    curret_user: str = Depends(validate_authenticate_user),
+    current_user: User = Depends(validate_authenticate_user),
 ):
     """
-    Retrieves a user by its ID. Checks that the user exists in the database.
+    Retrieves a user by its ID. 
+    Users can only see their own profile unless they are admin/superadmin.
     """
     try:
         user = await UserCrud(db).get(user_id)
@@ -58,6 +61,14 @@ async def get_user_id(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"User with id {user_id} not exist",
             )
+        
+        # Verificar permisos: solo puede ver su propio perfil o si es admin+
+        if not check_resource_ownership(current_user, user.id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Access denied. You can only view your own profile.",
+            )
+            
         return user
 
     except ValueError as ve:
