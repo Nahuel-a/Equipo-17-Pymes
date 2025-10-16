@@ -1,4 +1,4 @@
-from api.routers import user, auth, pyme, credits
+from api.routers import user, auth, pyme, credits, admin
 from fastapi import APIRouter, status
 
 api_router = APIRouter()
@@ -37,5 +37,15 @@ api_router.include_router(
     tags=["Credits"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+    },
+)
+
+api_router.include_router(
+    admin.router,
+    prefix="/api/admin",
+    tags=["Admin"],
+    responses={
+        status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+        status.HTTP_403_FORBIDDEN: {"description": "Access forbidden"},
     },
 )
