@@ -4,8 +4,8 @@ from cryptography.hazmat.backends import default_backend
 import base64
 
 # # Generate keys (do this once per customer or securely)
-# private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
-# public_key = private_key.public_key()
+private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
+public_key = private_key.public_key()
 
 def firmar_documento(documento_contenido):
     signature = private_key.sign(
