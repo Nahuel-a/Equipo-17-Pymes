@@ -148,6 +148,7 @@ class BaseCrud(ABC):
         try:
             self.session.add(new_instance)
             await self.session.commit()
+            await self.session.refresh(new_instance)
             return new_instance
         except SQLAlchemyError as e:
             await self.session.rollback()
