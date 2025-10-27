@@ -1,4 +1,4 @@
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, List
 from .models import BaseModel
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .enums import StatusCredit
@@ -7,8 +7,10 @@ import uuid
 
 if TYPE_CHECKING:
     from .pyme import Pymes
+    from .review import Reviews
 else:
     Pymes = "Pymes"
+    Reviews = "Reviews"
 
 class Credits(BaseModel):
     __tablename__ = "credits"
@@ -25,6 +27,9 @@ class Credits(BaseModel):
     )
     # documents: Mapped[Optional[str]] = mapped_column()
     
-    # Relación muchos a uno con Pyme
+    # Relationship many-to-one with Pymes
     pyme_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pymes.id"))
     pyme: Mapped[Pymes] = relationship(back_populates="credits")
+
+    # Relationship muchos-a-muchos con Users (reviewers) a través de Reviews
+    reviews: Mapped[List["Reviews"]] = relationship(back_populates="credits")
