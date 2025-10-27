@@ -1,29 +1,28 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Path
 from sqlalchemy.ext.asyncio import AsyncSession
-from api.dependencies.db import get_session
-from api.dependencies.auth import validate_authenticate_user
-from models.user import User
+from app.api.dependencies.db import get_session
+from app.api.dependencies.auth import validate_authenticate_user
+from app.models.user import User
 from schemas.pyme import PymeSchema  
-#from schemas.documents import DocumentsIn, DocumentsOut  
-#from crud.documents import DocumentsCrud 
+from app.schemas.documents import DocumentIn, DocumentOut  
+from app.crud.documents import ApplicationDocumentCrud 
 from utils.firmas import sign_document, verify_signature  # Del código anterior (renombrada a inglés)
 import uuid
 from crud.pyme import PymeCrud  
 from sqlalchemy.exc import SQLAlchemyError
 from app.schemas.firmas import SignatureCreate, SignatureOut
-#Hay que traer desde development el documentscrud y documentsschemas
-# Los from que estan comentados hay que activarlos cuando se pongan el eschemas y el crud
-router = APIRouter()
+
+router = APIRouter()    
 #(prefix="/firmas", tags=["Firmas Digitales"]) # Por si hace falta
 
 @router.post(
     "/{pyme_id}/sign_document",
     status_code=status.HTTP_201_CREATED,
-    response_model=DocumentsOut,
+    response_model=DocumentOut,
 )
 async def sign_document_for_pyme(
+    document: DocumentIn,  # Schema for the document to be signed
     pyme_id: uuid.UUID = Path(..., description="ID de la Pyme"),
-    document: DocumentsIn,  # Schema for the document to be signed
     db: AsyncSession = Depends(get_session),
     current_user: User = Depends(validate_authenticate_user),
 ):
@@ -58,8 +57,8 @@ async def sign_document_for_pyme(
 
         sign = sign_document(content_value)
 
-        # Ensure DocumentsCrud.create is an async method; if it's sync, adapt accordingly
-        new_document = await DocumentsCrud(db).create({
+        # Ensure ApplicationDocumentCrud.create is an async method; if it's sync, adapt accordingly
+        new_document = await ApplicationDocumentCrud(db).create({
             "pyme_id": pyme_id,
             "content": content_value,
             "digital_signature": sign,
@@ -93,7 +92,7 @@ async def verify_SME_document(
             detail="You do not have permission to verify this document",
         )
 
-    document = await DocumentsCrud(db).get(document_id)
+    document = await ApplicationDocumentCrud(db).get(document_id)
     if document is None or document.pyme_id != pyme_id:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

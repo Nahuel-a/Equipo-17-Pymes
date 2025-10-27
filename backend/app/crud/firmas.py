@@ -1,5 +1,5 @@
-from crud.abstract import BaseCrud
-from models.models_firmas import DigitalSignature
+from abstract import BaseCrud
+from app.models.models_firmas import DigitalSignature
 
 
 class SignatureCrud(BaseCrud):

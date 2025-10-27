@@ -57,7 +57,7 @@ def verify_signature(content: str, signature_b64: str, public_pem: bytes) -> boo
     """
     public_key = serialization.load_pem_public_key(public_pem, backend=default_backend())
     try:
-        public_key.verify(
+        public_key.verify_signature(
             base64.b64decode(signature_b64),
             content.encode(),
             padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH),

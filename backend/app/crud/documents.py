@@ -1,6 +1,6 @@
-from crud.abstract import BaseCrud
-from models.documents import ApplicationDocuments
+from abstract import BaseCrud
+from app.models.documents import ApplicationDocument
 
 
-class ApplicationDocumentsCrud(BaseCrud):
-    model = ApplicationDocuments
+class ApplicationDocumentCrud(BaseCrud):
+    model = ApplicationDocument
