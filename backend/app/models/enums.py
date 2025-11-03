@@ -13,3 +13,4 @@ class StatusCredit(str, Enum):
     IN_PROGRESS = "in_progress"
     APPROVED = "approved"
     REJECTED = "rejected"
+    MORE_INFO_REQUIRED = "more_info_required"
