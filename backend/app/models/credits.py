@@ -8,9 +8,6 @@ import uuid
 if TYPE_CHECKING:
     from .pyme import Pymes
     from .review import Reviews
-else:
-    Pymes = "Pymes"
-    Reviews = "Reviews"
 
 class Credits(BaseModel):
     __tablename__ = "credits"
@@ -25,11 +22,12 @@ class Credits(BaseModel):
         default=StatusCredit.PENDING,
         nullable=False,
     )
+    #MUY IMPORTANTE LA INTEGRACIÓN PARA LOS DOCUMENTOS
     # documents: Mapped[Optional[str]] = mapped_column()
     
     # Relationship many-to-one with Pymes
     pyme_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pymes.id"))
-    pyme: Mapped[Pymes] = relationship(back_populates="credits")
+    pyme: Mapped["Pymes"] = relationship(back_populates="credits")
 
-    # Relationship muchos-a-muchos con Users (reviewers) a través de Reviews
-    reviews: Mapped[List["Reviews"]] = relationship(back_populates="credits")
+    # Relationship many-to-many with Users through Reviews
+    reviews: Mapped[Optional[List["Reviews"]]] = relationship(back_populates="credits")
