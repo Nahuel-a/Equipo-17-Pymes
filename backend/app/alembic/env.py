@@ -6,6 +6,7 @@ from core.database import Base
 from models.user import User  # noqa: F401
 from models.pyme import Pymes  # noqa: F401
 from models.credits import Credits  # noqa: F401
+from models.review import Reviews  # noqa: F401
 
 settings = get_settings()
 
