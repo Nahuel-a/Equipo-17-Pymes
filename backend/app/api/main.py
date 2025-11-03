@@ -10,6 +10,7 @@ api_router.include_router(
     tags=["Authentication"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+        status.HTTP_403_FORBIDDEN: {"description": "Access forbidden"},
     },
 )
 
@@ -19,6 +20,7 @@ api_router.include_router(
     tags=["User"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+        status.HTTP_403_FORBIDDEN: {"description": "Access forbidden"},
     },
 )
 
@@ -28,6 +30,7 @@ api_router.include_router(
     tags=["Pyme"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+        status.HTTP_403_FORBIDDEN: {"description": "Access forbidden"},
     },
 )
 
@@ -37,6 +40,7 @@ api_router.include_router(
     tags=["Credits"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+        status.HTTP_403_FORBIDDEN: {"description": "Access forbidden"},
     },
 )
 
