@@ -1,4 +1,4 @@
-from api.dependencies.auth import validate_authenticate_user
+from utils.permissions import  require_user_role
 from sqlalchemy.exc import SQLAlchemyError
 from api.dependencies.db import get_session
 from crud.user import UserCrud
@@ -48,7 +48,7 @@ async def create_user(
 async def get_user_id(
     user_id: uuid.UUID,
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_user_role),
 ):
     """
     Retrieves a user by its ID. 
@@ -82,7 +82,6 @@ async def get_user_id(
             detail="Database error occurred",
         )
 
-
 async def send_reset_code_email(email: str, reset_code: str):
     """
     Send password reset code via email using SendGrid service.
@@ -97,8 +96,6 @@ async def send_reset_code_email(email: str, reset_code: str):
             
     except Exception as e:
         logging.error(f"Error sending password reset email to {email}: {str(e)}")
-        # En caso de error, también log del código para debugging (remover en producción)
-        logging.info(f"Password reset code for {email}: {reset_code}")
 
 
 @router.post("/password-reset-request/", status_code=status.HTTP_200_OK)

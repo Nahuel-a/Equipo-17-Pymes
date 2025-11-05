@@ -1,4 +1,3 @@
-from api.dependencies.auth import validate_authenticate_user
 from sqlalchemy.exc import SQLAlchemyError
 from api.dependencies.db import get_session
 from crud.pyme import PymeCrud
@@ -7,7 +6,7 @@ from schemas.pyme import PymeSchema, PymeCreate
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from models.user import User
 from models.enums import RoleUser
-from utils.permissions import check_resource_ownership
+from utils.permissions import check_resource_ownership, require_user_role, require_admin_role
 from typing import List
 import uuid
 
@@ -22,7 +21,7 @@ router = APIRouter()
 async def create_pyme(
     pyme_create: PymeCreate,
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_user_role),
 ):
     """
     Create a new SME. Only an authenticated user can create an SME.
@@ -61,7 +60,7 @@ async def create_pyme(
 async def get_pyme(
     pyme_id: uuid.UUID,
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_user_role),
 ):
     """
     Obtain an SME by its ID. The user must be authenticated.
@@ -105,7 +104,7 @@ async def get_pyme(
 )
 async def get_all_pymes(
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_admin_role),
 ):
     """
     Get SMEs based on user role:
@@ -113,13 +112,10 @@ async def get_all_pymes(
     - USER: Can only view their own SME
     """
     try:
-        if current_user.role in [RoleUser.ADMIN, RoleUser.SUPERADMIN]:
-            pymes = await PymeCrud(db).get_all()
-            return list(pymes)
-        else:
-            pyme = await PymeCrud(db).get_by_attribute("user_id", current_user.id)
-            return [pyme] if pyme else []
-            
+        pymes = await PymeCrud(db).get_all()
+        
+        return list(pymes)
+    
     except SQLAlchemyError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

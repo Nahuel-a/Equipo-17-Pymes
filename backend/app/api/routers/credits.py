@@ -1,4 +1,3 @@
-from api.dependencies.auth import validate_authenticate_user
 from sqlalchemy.exc import SQLAlchemyError
 from api.dependencies.db import get_session
 from crud.pyme import PymeCrud
@@ -9,13 +8,13 @@ from schemas.credits import CreditsCreate, CreditsSchema
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from models.user import User
 from models.enums import RoleUser
-from utils.permissions import check_resource_ownership
+from utils.permissions import check_resource_ownership, require_user_role, require_minimum_role
 from typing import List
 import uuid
 
 router = APIRouter()
 
-
+@require_minimum_role(RoleUser.USER)
 async def create_pyme(
     db: AsyncSession, 
     current_user: User, 
@@ -59,7 +58,7 @@ async def create_credit(
     credit_create: CreditsCreate = Body(...),
     pyme_data: PymeBase = Body(None),
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_user_role),
 ):
     """
     Create a new loan. The user must be authenticated.
@@ -107,7 +106,7 @@ async def create_credit(
 async def get_credit(
     credit_id: uuid.UUID,
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_user_role),
 ):
     """
     Obtain credit using your ID. 
@@ -121,9 +120,6 @@ async def get_credit(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"Credit with ID {credit_id} not found",
             )
-
-        if current_user.role in [RoleUser.ADMIN, RoleUser.SUPERADMIN]:
-            return credit
 
         pyme = await PymeCrud(db).get(credit.pyme_id)
         if not pyme:
@@ -159,7 +155,7 @@ async def get_credit(
 )
 async def get_all_credits(
     db: AsyncSession = Depends(get_session),
-    current_user: User = Depends(validate_authenticate_user),
+    current_user: User = Depends(require_user_role),
 ):
     """
     Get credits based on user role:
@@ -189,3 +185,6 @@ async def get_all_credits(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error obtaining credits: {str(e)}",
         )
+    
+# Agregar un PUT cuando se requiera mas informacion sobre el credito(Status more_info_required)
+
