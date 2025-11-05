@@ -124,7 +124,6 @@ async def update_user_role(
             )
         
         # Update role directly
-        # Get admin user email safely
         admin_email = "admin"
         try:
             # Explicitly load current_user to access its attributes
@@ -140,8 +139,6 @@ async def update_user_role(
             "role", 
             role_request.new_role
         )
-        
-        # Complete and safe response
         return {
             "message": "User role updated successfully",
             "user_id": str(role_request.user_id),
@@ -188,8 +185,7 @@ async def activate_user(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="User is already active"
             )
-        
-        # Get admin user email safely
+
         admin_email = "admin"
         try:
             admin_user_fresh = await user_crud.get(current_user.id)
@@ -234,7 +230,6 @@ async def deactivate_user(
                 detail="Cannot deactivate your own account"
             )
     except Exception:
-        # Si hay problema accediendo al ID, por seguridad no permitimos la operación
         pass
     
     try:
@@ -255,7 +250,6 @@ async def deactivate_user(
                     detail="Cannot deactivate admin or superadmin accounts"
                 )
         except Exception:
-            # Si hay problema accediendo al rol, asumimos que no es SUPERADMIN por seguridad
             if user.role in [RoleUser.ADMIN, RoleUser.SUPERADMIN]:
                 raise HTTPException(
                     status_code=status.HTTP_403_FORBIDDEN,
@@ -268,7 +262,6 @@ async def deactivate_user(
                 detail="User is already inactive"
             )
         
-        # Get admin user email safely
         admin_email = "admin"
         try:
             admin_user_fresh = await user_crud.get(current_user.id)
