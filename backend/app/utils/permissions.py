@@ -4,7 +4,7 @@ This module provides decorators and functions to control access to endpoints bas
 """
 
 from functools import wraps
-from typing import List, Callable, Any
+from typing import Callable
 from fastapi import HTTPException, status
 from models.enums import RoleUser
 from models.user import User
@@ -61,44 +61,6 @@ class PermissionManager:
             return target_role in [RoleUser.USER, RoleUser.ADMIN]
             
         return False
-
-
-def require_role(required_roles: List[RoleUser]):
-    """
-    Decorator to require specific roles in endpoints.
-    
-    Args:
-        required_roles: List of roles that can access the endpoint
-        
-    Example:
-        @require_role([RoleUser.ADMIN, RoleUser.SUPERADMIN])
-        async def admin_only_endpoint():
-            pass
-    """
-    def decorator(func: Callable) -> Callable:
-        @wraps(func)
-        async def wrapper(*args, **kwargs):
-            current_user = None
-            for key, value in kwargs.items():
-                if isinstance(value, User):
-                    current_user = value
-                    break
-            
-            if not current_user:
-                raise HTTPException(
-                    status_code=status.HTTP_401_UNAUTHORIZED,
-                    detail="Authentication required"
-                )
-            
-            if current_user.role not in required_roles:
-                raise HTTPException(
-                    status_code=status.HTTP_403_FORBIDDEN,
-                    detail=f"Access denied. Required roles: {[role.value for role in required_roles]}"
-                )
-            
-            return await func(*args, **kwargs)
-        return wrapper
-    return decorator
 
 
 def require_minimum_role(minimum_role: RoleUser):
