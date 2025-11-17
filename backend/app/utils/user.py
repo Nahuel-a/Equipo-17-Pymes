@@ -3,7 +3,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from crud.user import UserCrud
 from .password import verify
-from argon2.exceptions import VerifyMismatchError
+
 
 
 async def is_authenticate(
@@ -30,22 +30,19 @@ async def is_authenticate(
                 detail="Incorrect email",
                 headers={"WWW-Authenticate": "Bearer"},
             )
+       
+        match, needs_rehash = verify(password, user.password)
 
-        try:
-            # Password verification
-            if not await verify(password, user.password):
-                raise HTTPException(
-                    status_code=status.HTTP_401_UNAUTHORIZED,
-                    detail="Incorrect password",
-                    headers={"WWW-Authenticate": "Bearer"},
-                )
-        except VerifyMismatchError:
-            # Password verification failed
+        if not match:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect password",
                 headers={"WWW-Authenticate": "Bearer"},
             )
+        # Rehash the password if needed
+        if needs_rehash:
+            user.password = hash(password)
+            await db.commit()
 
         return user
 

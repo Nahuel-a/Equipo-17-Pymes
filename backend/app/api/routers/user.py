@@ -35,7 +35,7 @@ async def create_user(
             status_code=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION,
             detail=f"User with email '{exist_user.email}' is already registered",
         )
-    hashed_password = await hash(user_create.password)
+    hashed_password = hash(user_create.password)
     user_create.password = hashed_password
     new_user = await UserCrud(db).create(user_create)
     return new_user
@@ -176,7 +176,7 @@ async def reset_password(
     
     try:
         # Update the password
-        hashed_password = await hash(reset_data.new_password)
+        hashed_password = hash(reset_data.new_password)
         await UserCrud(db).update_attribute(user.id, "password", hashed_password)
 
         # Clear the recovery code

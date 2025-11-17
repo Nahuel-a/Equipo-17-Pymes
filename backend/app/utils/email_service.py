@@ -1,7 +1,5 @@
 # Email service using SendGrid's Python Library
 # https://github.com/sendgrid/sendgrid-python
-import os
-import asyncio
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from typing import Optional

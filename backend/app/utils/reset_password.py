@@ -72,7 +72,6 @@ class PasswordResetManager:
         cls._reset_codes.pop(email, None)
 
 
-# Function to use in API endpoints
 async def generate_password_reset_code(email: str) -> str:
     """
     Generate a password reset code for a user.

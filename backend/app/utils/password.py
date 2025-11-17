@@ -1,8 +1,16 @@
 from argon2 import PasswordHasher
-from argon2.exceptions import VerifyMismatchError
+from argon2.exceptions import (
+    VerifyMismatchError,
+    VerificationError,
+    InvalidHashError,
+)
+from argon2.profiles import RFC_9106_LOW_MEMORY
 
 
-async def hash(password: str):
+ph = PasswordHasher.from_parameters(RFC_9106_LOW_MEMORY)
+
+
+def hash(password: str) -> str:
     """
     Generates a secure hash from a password.
 
@@ -12,10 +20,10 @@ async def hash(password: str):
     Returns:
         str: The password hash.
     """
-    return PasswordHasher().hash(password)
+    return ph.hash(password)
 
 
-async def verify(plain_password, hash_password):
+def verify(plain_password: str, hashed_password: str) -> tuple[bool, bool]:
     """
     Checks if a password matches a stored hash.
 
@@ -27,6 +35,13 @@ async def verify(plain_password, hash_password):
         bool: True if the password matches, false otherwise.
     """
     try:
-        return PasswordHasher().verify(hash_password, plain_password)
+        match = ph.verify(hashed_password, plain_password)
+        needs_rehash = ph.check_needs_rehash(hashed_password)
+        return match, needs_rehash
+
     except VerifyMismatchError:
-        return False
+        return False, False
+
+    except (InvalidHashError, VerificationError):
+        # hash corrupto, incompatible o malformado
+        return False, False
